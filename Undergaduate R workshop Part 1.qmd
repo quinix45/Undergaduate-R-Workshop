@@ -1,0 +1,42 @@
+---
+title: "Undergraduate R workshop"
+title-slide-attributes:
+  
+  data-background-image: images/Frame_title.png
+  data-background-size: 83%
+  data-background-opacity: 100%
+
+author: "Fabio Setti"
+format:
+   revealjs:
+      footer: "Undergraduate R workshop"
+      chalkboard: true
+      theme: Theme/Memory_lab_theme.scss
+      navigation-mode: linear
+      controls: false
+      slide-number: c 
+      width: 1280
+      height: 720
+      transition-speed: slow
+  
+editor: source
+---
+
+## Quarto
+
+Quarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see <https://quarto.org/docs/presentations/>.
+
+## Bullets
+
+When you click the **Render** button a document will be generated that includes:
+
+-   Content authored with markdown
+-   Output from executable code
+
+## Code
+
+When you click the **Render** button a presentation will be generated that includes both content and the output of embedded code. You can embed code like this
+
+```{r}
+1 + 1
+```
