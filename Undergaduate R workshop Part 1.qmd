@@ -6,7 +6,7 @@ title-slide-attributes:
   data-background-size: 83%
   data-background-opacity: 100%
 
-author: "Fabio Setti"
+author: "Fabio Setti & Sam Deng"
 format:
    revealjs:
       footer: "Undergraduate R workshop"
@@ -22,21 +22,236 @@ format:
 editor: source
 ---
 
-## Quarto
+## Workshop structure
 
-Quarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see <https://quarto.org/docs/presentations/>.
+Slide about the workshop structure
 
-## Bullets
 
-When you click the **Render** button a document will be generated that includes:
+# {transition="zoom" data-menu-title="Introduction to R and RStudio"}
 
--   Content authored with markdown
--   Output from executable code
 
-## Code
+::: {layout-ncol="2"}
 
-When you click the **Render** button a presentation will be generated that includes both content and the output of embedded code. You can embed code like this
+::: col
 
-```{r}
-1 + 1
-```
+<br />
+
+<p style=" 
+
+  font-size: 2.4em;
+  font-weight:	800;
+  font-family: sans-serif;
+  smargin: 0 0 20px 0;
+  color: #996633;
+  font-family: "League Gothic", Impact, sans-serif;
+  line-height: 0.9em;
+  letter-spacing: 0.04em;
+  text-transform: capitalize;
+  text-shadow: none; "> Introduction to R and RStudio 
+  
+</p>
+
+
+:::
+
+
+:::col
+![](images/R_Rstudio_confused.png)
+
+:::
+:::
+
+## What is R?
+
+![](images/R_logo.png){.absolute top=-35 right=-50 width="120" height="80"}
+
+
+<p style="font-size:32px;"> **R** ([https://www.r-project.org/about.html](){target="_blank"}) is a programming language originally designed for statistical computing and data visualization. </p>
+
+<center> <p style="font-size:28px;">  Nowadays, R can do many more things! such as: </p> </center>
+
+:::{layout-ncol="3"}
+
+:::col
+<center> <p style="font-size:28px;"> Data handling and manipulation ([tidyverse](https://www.tidyverse.org){target="_blank"}) </p> </center>
+:::
+
+:::col
+<center> <p style="font-size:28px;">  Creating 3D computer graphics ([rayrender](https://www.rayrender.net){target="_blank"}) </p> </center>
+:::
+
+:::col
+ <center> <p style="font-size:28px;">  Web scraping ([rvest](https://cran.r-project.org/web/packages/rvest/rvest.pdf){target="_blank"}) </p> </center>
+:::
+
+:::
+
+
+:::{layout-ncol="2"}
+
+:::col
+<center>  <p style="font-size:28px;"> Make music?!😮 ([tuneR](https://cran.r-project.org/web/packages/tuneR/tuneR.pdf){target="_blank"}) </p> </center>
+:::
+
+:::col
+<center> <p style="font-size:28px;">  Create some [simple games](https://www.rostrum.blog/posts/2023-04-02-splendid-r-games/){target="_blank"} </p> </center>
+:::
+
+:::
+
+<p style="font-size:32px;"> <center> Today we are going to only go over some of the basics. but keep in mind these **two points**: </center> </p>
+
+:::{layout-ncol="2"}
+
+:::col
+<center>  <p style="font-size:28px;"> There are multiple ways of doing the same thing in R. As long as you get to the desired result, how you got there is (usually) irrelevant. </p> </center>
+:::
+
+:::col
+<center> <p style="font-size:28px;"> R can do just about anything you can think of. In most cases, the only limit is your imagination and your Googling 🔎 skills.  </p> </center>
+:::
+
+:::
+
+
+## What is RStudio?
+
+![](images/Rstudio-logo.png){.absolute top=-25 right=-40 width="120" height="120"}
+
+
+<p style="font-size:32px;"> Whereas **R** is a programming language, **RStudio** is an integrated development environment (IDE...a what? 😕) </p>
+
+
+:::{layout-ncol="2"}
+
+:::.col
+<p style="font-size:32px;"> An IDE is a software that facilitates writing code in general. Although **RStudio** was developed with **R** in mind, it also supports many other programming languages (e.g., Python, Javascript, C...) </p>
+:::
+
+:::.col
+<p style="font-size:32px;"> Likewise, you do not need **RStudio** to use **R**. However, **RStudio** is by far the best IDE for **R** and makes the process much more efficient! </p>
+:::
+:::
+
+<center> Not super important, but just a distinction that I wanted to point out <center>
+
+<p style="font-size:182px;"> 🤷 </p>
+
+
+## FYI 
+
+<p style="font-size:32px;"> You will never have to open R directly, but this is what R looks like compared to RStudio: </p>
+
+
+![](images/Drake_meme_1.png){.absolute top=280 left=-20 width="240" height="240"}
+
+![](images/R_logo.png){.absolute top=150 left=320 width="160" height="100"}
+
+![](images/R_console.png){.absolute top=300 left=250 width="380" height="240"}
+
+
+
+
+![](images/Drake_meme_2.png){.absolute top=280 left=650 width="240" height="240"}
+
+
+![](images/Rstudio-logo.png){.absolute top=150 left=1020 width="120" height="120"}
+
+![](images/RStudio_empty.png){.absolute top=300 left=920 width="380" height="240"}
+
+## Rstudio: What Am I Looking At?
+
+
+:::{layout-ncol="2"}
+
+:::.col
+
+<p style="font-size:32px;"> The RStudio interface is divided into **4 panes**: </p>
+
+
+
+<ul style = "font-size: 28px;">
+
+:::{.fragment .fade-in fragment-index="1"}
+<li> **Source** (top-left): This pane is where we will do most of our work. Here is were you can edit and run your code files. </li>
+:::
+
+:::{.fragment .fade-in fragment-index="2"}
+<li> **Environment** (top-right): This is where you can find the *objects* that are present in the current R session. </li>
+:::
+
+:::{.fragment .fade-in fragment-index="3"}
+<li> **Console** (bottom-left): The console is actually R by itself (the R console) and it is how RStudio runs R. You will find *output*, *messages*, and *warnings* here.\* </li>
+:::
+
+:::{.fragment .fade-in fragment-index="4"}
+<li>**Viewer** (bottom-right): This is a bit of a catch-all pane. Here, you will find plots, installed *packages*, help for *functions*, and your computer folders (under *files*)  </li>
+:::
+
+
+</ul>
+
+
+
+:::
+
+
+:::.col
+
+</br>
+
+
+![](images/RStudio_empty.png)
+
+
+:::{.fragment .fade-in fragment-index="3"}
+<p style="font-size:18px;"> \* **Extra info:**You can actually  write and run code directly in the console, but you cannot save your code (which you should always do!). When you run your code from the Source pane, RStudio sends it to the console to be *interpreted*. All computer code is just plain text; what you need to run code of a certain computer language is to have something that interprets it and runs it. The R console is what interprets and runs your code (Hence why you need to have R on your computer to use R in RStudio) </p>
+:::
+
+:::
+
+:::
+
+
+# {transition="zoom" data-menu-title="R Basics"}
+
+
+::: {layout-ncol="2"}
+
+::: col
+
+
+</br>
+</br>
+
+</br>
+</br>
+
+<p style=" 
+
+  font-size: 2.4em;
+  font-weight:	800;
+  font-family: sans-serif;
+  smargin: 0 0 20px 0;
+  color: #996633;
+  font-family: "League Gothic", Impact, sans-serif;
+  line-height: 0.9em;
+  letter-spacing: 0.04em;
+  text-transform: capitalize;
+  text-shadow: none; "> R Basics
+  
+</p>
+
+
+:::
+
+
+:::col
+![](images/computer_programming.png)
+
+:::
+:::
+
+
+
+

@@ -127,24 +127,12 @@ font-weight: 500 !important;
 
 
 .slide-background {
-    //background-color: #447099 !important;
-    background-image: url('Blue_circle.png')
-                    //, url('Dots_faded.png') 
-                      ; 
-    background-position: 117% 140%
-                         //, 117% -20%
-                         ;
-    //117.5% 144%
-    background-size: 21% auto
-                    //,25% auto
-                    ;
-    background-repeat: no-repeat
-                      //,no-repeat
-                      ;
+  //background-color: #447099 !important;
+  background-image: url('corner_shape.png'); 
+  background-position: 117% 140%;
+  background-size: 20.5% auto ;
+  background-repeat: no-repeat;
 } 
-
-
-
 
 // default values for variables
 

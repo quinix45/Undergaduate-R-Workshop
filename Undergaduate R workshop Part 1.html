@@ -8,9 +8,9 @@
 <link href="Undergaduate R workshop Part 1_files/libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="Undergaduate R workshop Part 1_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="Undergaduate R workshop Part 1_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.3.450">
+  <meta name="generator" content="quarto-1.4.549">
 
-  <meta name="author" content="Fabio Setti">
+  <meta name="author" content="Fabio Setti &amp; Sam Deng">
   <title>Undergraduate R workshop</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -158,7 +158,8 @@
   }
 
   .callout.callout-titled .callout-body > .callout-content > :last-child {
-    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
   }
 
   .callout.callout-titled .callout-icon::before {
@@ -332,34 +333,227 @@
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-Fabio Setti 
+Fabio Setti &amp; Sam Deng 
 </div>
 </div>
 </div>
 
 </section>
-<section id="quarto" class="slide level2">
-<h2>Quarto</h2>
-<p>Quarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see <a href="https://quarto.org/docs/presentations/" class="uri">https://quarto.org/docs/presentations/</a>.</p>
+<section id="workshop-structure" class="slide level2">
+<h2>Workshop structure</h2>
+<p>Slide about the workshop structure</p>
 </section>
-<section id="bullets" class="slide level2">
-<h2>Bullets</h2>
-<p>When you click the <strong>Render</strong> button a document will be generated that includes:</p>
-<ul>
-<li>Content authored with markdown</li>
-<li>Output from executable code</li>
+<section>
+<section id="section" class="title-slide slide level1 center" data-transition="zoom" data-menu-title="Introduction to R and RStudio">
+<h1></h1>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="col quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<p><br></p>
+<p style=" 
+
+  font-size: 2.4em;
+  font-weight:  800;
+  font-family: sans-serif;
+  smargin: 0 0 20px 0;
+  color: #996633;
+  font-family: " league="" gothic",="" impact,="" sans-serif;="" line-height:="" 0.9em;="" letter-spacing:="" 0.04em;="" text-transform:="" capitalize;="" text-shadow:="" none;="" "=""> Introduction to R and RStudio 
+  
+</p>
+</div>
+<div class="col quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img data-src="images/R_Rstudio_confused.png"></p>
+</div>
+</div>
+</div>
+</section>
+<section id="what-is-r" class="slide level2">
+<h2>What is R?</h2>
+<p><img data-src="images/R_logo.png" class="absolute" style="top: -35px; right: -50px; width: 120px; height: 80px; "></p>
+<p style="font-size:32px;">
+<strong>R</strong> (<a href="" target="_blank">https://www.r-project.org/about.html</a>) is a programming language originally designed for statistical computing and data visualization.
+</p>
+<center>
+<p style="font-size:28px;">
+Nowadays, R can do many more things! such as:
+</p>
+</center>
+<div class="quarto-layout-panel" data-layout-ncol="3">
+<div class="quarto-layout-row">
+<div class="col quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
+<center>
+<p style="font-size:28px;">
+Data handling and manipulation (<a href="https://www.tidyverse.org" target="_blank">tidyverse</a>)
+</p>
+</center>
+</div>
+<div class="col quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
+<center>
+<p style="font-size:28px;">
+Creating 3D computer graphics (<a href="https://www.rayrender.net" target="_blank">rayrender</a>)
+</p>
+</center>
+</div>
+<div class="col quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
+<center>
+<p style="font-size:28px;">
+Web scraping (<a href="https://cran.r-project.org/web/packages/rvest/rvest.pdf" target="_blank">rvest</a>)
+</p>
+</center>
+</div>
+</div>
+</div>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="col quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<center>
+<p style="font-size:28px;">
+Make music?!😮 (<a href="https://cran.r-project.org/web/packages/tuneR/tuneR.pdf" target="_blank">tuneR</a>)
+</p>
+</center>
+</div>
+<div class="col quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<center>
+<p style="font-size:28px;">
+Create some <a href="https://www.rostrum.blog/posts/2023-04-02-splendid-r-games/" target="_blank">simple games</a>
+</p>
+</center>
+</div>
+</div>
+</div>
+<p style="font-size:32px;">
+</p><center>
+Today we are going to only go over some of the basics. but keep in mind these <strong>two points</strong>:
+</center>
+<p></p>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="col quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<center>
+<p style="font-size:28px;">
+There are multiple ways of doing the same thing in R. As long as you get to the desired result, how you got there is (usually) irrelevant.
+</p>
+</center>
+</div>
+<div class="col quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<center>
+<p style="font-size:28px;">
+R can do just about anything you can think of. In most cases, the only limit is your imagination and your Googling 🔎 skills.
+</p>
+</center>
+</div>
+</div>
+</div>
+</section>
+<section id="what-is-rstudio" class="slide level2">
+<h2>What is RStudio?</h2>
+<p><img data-src="images/Rstudio-logo.png" class="absolute" style="top: -25px; right: -40px; width: 120px; height: 120px; "></p>
+<p style="font-size:32px;">
+Whereas <strong>R</strong> is a programming language, <strong>RStudio</strong> is an integrated development environment (IDE…a what? 😕)
+</p>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class=".col quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<p style="font-size:32px;">
+An IDE is a software that facilitates writing code in general. Although <strong>RStudio</strong> was developed with <strong>R</strong> in mind, it also supports many other programming languages (e.g., Python, Javascript, C…)
+</p>
+</div>
+<div class=".col quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<p style="font-size:32px;">
+Likewise, you do not need <strong>RStudio</strong> to use <strong>R</strong>. However, <strong>RStudio</strong> is by far the best IDE for <strong>R</strong> and makes the process much more efficient!
+</p>
+</div>
+</div>
+</div>
+<center>
+Not super important, but just a distinction that I wanted to point out
+<center>
+<p style="font-size:182px;">
+🤷
+</p>
+</center></center></section>
+<section id="fyi" class="slide level2">
+<h2>FYI</h2>
+<p style="font-size:32px;">
+You will never have to open R directly, but this is what R looks like compared to RStudio:
+</p>
+<p><img data-src="images/Drake_meme_1.png" class="absolute" style="top: 280px; left: -20px; width: 240px; height: 240px; "></p>
+<p><img data-src="images/R_logo.png" class="absolute" style="top: 150px; left: 320px; width: 160px; height: 100px; "></p>
+<p><img data-src="images/R_console.png" class="absolute" style="top: 300px; left: 250px; width: 380px; height: 240px; "></p>
+<p><img data-src="images/Drake_meme_2.png" class="absolute" style="top: 280px; left: 650px; width: 240px; height: 240px; "></p>
+<p><img data-src="images/Rstudio-logo.png" class="absolute" style="top: 150px; left: 1020px; width: 120px; height: 120px; "></p>
+<p><img data-src="images/RStudio_empty.png" class="absolute" style="top: 300px; left: 920px; width: 380px; height: 240px; "></p>
+</section>
+<section id="rstudio-what-am-i-looking-at" class="slide level2">
+<h2>Rstudio: What Am I Looking At?</h2>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class=".col quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<p style="font-size:32px;">
+The RStudio interface is divided into <strong>4 panes</strong>:
+</p>
+<ul style="font-size: 28px;">
+<div class="fragment fade-in" data-fragment-index="1">
+<li>
+<strong>Source</strong> (top-left): This pane is where we will do most of our work. Here is were you can edit and run your code files.
+</li>
+</div>
+<div class="fragment fade-in" data-fragment-index="2">
+<li>
+<strong>Environment</strong> (top-right): This is where you can find the <em>objects</em> that are present in the current R session.
+</li>
+</div>
+<div class="fragment fade-in" data-fragment-index="3">
+<li>
+<strong>Console</strong> (bottom-left): The console is actually R by itself (the R console) and it is how RStudio runs R. You will find <em>output</em>, <em>messages</em>, and <em>warnings</em> here.*
+</li>
+</div>
+<div class="fragment fade-in" data-fragment-index="4">
+<li>
+<strong>Viewer</strong> (bottom-right): This is a bit of a catch-all pane. Here, you will find plots, installed <em>packages</em>, help for <em>functions</em>, and your computer folders (under <em>files</em>)
+</li>
+</div>
 </ul>
-</section>
-<section id="code" class="slide level2">
-<h2>Code</h2>
-<p>When you click the <strong>Render</strong> button a presentation will be generated that includes both content and the output of embedded code. You can embed code like this</p>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2</code></pre>
+</div>
+<div class=".col quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><br></p>
+<p><img data-src="images/RStudio_empty.png"></p>
+<div class="fragment fade-in" data-fragment-index="3">
+<p style="font-size:18px;">
+* <strong>Extra info:</strong>You can actually write and run code directly in the console, but you cannot save your code (which you should always do!). When you run your code from the Source pane, RStudio sends it to the console to be <em>interpreted</em>. All computer code is just plain text; what you need to run code of a certain computer language is to have something that interprets it and runs it. The R console is what interprets and runs your code (Hence why you need to have R on your computer to use R in RStudio)
+</p>
 </div>
 </div>
+</div>
+</div>
+</section></section>
+<section id="section-1" class="title-slide slide level1 center" data-transition="zoom" data-menu-title="R Basics">
+<h1></h1>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="col quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<p><br> <br></p>
+<p><br> <br></p>
+<p style=" 
+
+  font-size: 2.4em;
+  font-weight:  800;
+  font-family: sans-serif;
+  smargin: 0 0 20px 0;
+  color: #996633;
+  font-family: " league="" gothic",="" impact,="" sans-serif;="" line-height:="" 0.9em;="" letter-spacing:="" 0.04em;="" text-transform:="" capitalize;="" text-shadow:="" none;="" "=""> R Basics
+  
+</p>
+</div>
+<div class="col quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img data-src="images/computer_programming.png"></p>
+</div>
+</div>
+</div>
+<div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 <p>Undergraduate R workshop</p>
+</div>
 </div>
 </section>
     </div>
@@ -389,7 +583,6 @@ Fabio Setti
       Reveal.initialize({
 'controlsAuto': false,
 'previewLinksAuto': false,
-'smaller': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
@@ -575,44 +768,6 @@ Fabio Setti
         ]
       });
     </script>
-    
-    <script>
-      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
-      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
-      // slide changes (different for each slide format).
-      (function () {
-        // dispatch for htmlwidgets
-        function fireSlideEnter() {
-          const event = window.document.createEvent("Event");
-          event.initEvent("slideenter", true, true);
-          window.document.dispatchEvent(event);
-        }
-
-        function fireSlideChanged(previousSlide, currentSlide) {
-          fireSlideEnter();
-
-          // dispatch for shiny
-          if (window.jQuery) {
-            if (previousSlide) {
-              window.jQuery(previousSlide).trigger("hidden");
-            }
-            if (currentSlide) {
-              window.jQuery(currentSlide).trigger("shown");
-            }
-          }
-        }
-
-        // hookup for slidy
-        if (window.w3c_slidy) {
-          window.w3c_slidy.add_observer(function (slide_num) {
-            // slide_num starts at position 1
-            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
-          });
-        }
-
-      })();
-    </script>
-
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {
@@ -689,10 +844,9 @@ Fabio Setti
         // clear code selection
         e.clearSelection();
       });
-      function tippyHover(el, contentFn) {
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
-          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -702,8 +856,17 @@ Fabio Setti
           interactive: true,
           interactiveBorder: 10,
           theme: 'light-border',
-          placement: 'bottom-start'
+          placement: 'bottom-start',
         };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 
