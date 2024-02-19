@@ -10,8 +10,8 @@ author: "Fabio Setti & Sam Deng"
 format:
    revealjs:
       footer: "Undergraduate R workshop"
-      chalkboard: true
-      theme: Theme/Memory_lab_theme.scss
+      chalkboard: true 
+      theme: Theme/R_workshop_theme.scss
       navigation-mode: linear
       controls: false
       slide-number: c 
@@ -23,11 +23,6 @@ format:
 editor: source
 ---
 
-## Workshop structure
-
-Slide about the workshop structure
-
-
 # {transition="zoom" data-menu-title="Introduction to R and RStudio"}
 
 
@@ -35,7 +30,9 @@ Slide about the workshop structure
 
 ::: col
 
-<br />
+</br>
+</br>
+</br>
 
 <p style=" 
 
@@ -67,23 +64,32 @@ Slide about the workshop structure
 ![](images/R_logo.png){.absolute top=-35 right=-50 width="120" height="80"}
 
 
-<p style="font-size:32px;"> **R** ([https://www.r-project.org/about.html](){target="_blank"}) is a programming language originally designed for statistical computing and data visualization. </p>
+<p style="font-size:32px;"> **R** ([https://www.r-project.org/about.html](https://www.r-project.org/about.html){target="_blank"}) is a programming language originally designed for statistical computing and data visualization. </p>
 
+:::{.fragment .fade-in fragment-index="1"}
 <center> <p style="font-size:28px;">  Nowadays, R can do many more things! such as: </p> </center>
+:::
+
 
 :::{layout-ncol="3"}
 
 :::col
+:::{.fragment .fade-in fragment-index="2"}
 <center> <p style="font-size:28px;"> Data handling and manipulation ([tidyverse](https://www.tidyverse.org){target="_blank"}) </p> </center>
 :::
+:::
 
 :::col
+:::{.fragment .fade-in fragment-index="3"}
 <center> <p style="font-size:28px;">  Creating 3D computer graphics ([rayrender](https://www.rayrender.net){target="_blank"}) </p> </center>
 :::
+:::
 
 :::col
+:::{.fragment .fade-in fragment-index="4"}
  <center> <p style="font-size:28px;">  Web scraping ([rvest](https://cran.r-project.org/web/packages/rvest/rvest.pdf){target="_blank"}) </p> </center>
 :::
+:::
 
 :::
 
@@ -91,25 +97,34 @@ Slide about the workshop structure
 :::{layout-ncol="2"}
 
 :::col
+:::{.fragment .fade-in fragment-index="5"}
 <center>  <p style="font-size:28px;"> Make music?!😮 ([tuneR](https://cran.r-project.org/web/packages/tuneR/tuneR.pdf){target="_blank"}) </p> </center>
 :::
+:::
 
 :::col
+:::{.fragment .fade-in fragment-index="6"}
 <center> <p style="font-size:28px;">  Create some [simple games](https://www.rostrum.blog/posts/2023-04-02-splendid-r-games/){target="_blank"} </p> </center>
 :::
-
 :::
 
+:::
+:::{.fragment .fade-in fragment-index="7"}
 <p style="font-size:32px;"> <center> Today we are going to only go over some of the basics. but keep in mind these **two points**: </center> </p>
+:::
 
 :::{layout-ncol="2"}
 
 :::col
+:::{.fragment .fade-in fragment-index="8"}
 <center>  <p style="font-size:28px;"> There are multiple ways of doing the same thing in R. As long as you get to the desired result, how you got there is (usually) irrelevant. </p> </center>
+:::
 :::
 
 :::col
+:::{.fragment .fade-in fragment-index="9"}
 <center> <p style="font-size:28px;"> R can do just about anything you can think of. In most cases, the only limit is your imagination and your Googling 🔎 skills.  </p> </center>
+:::
 :::
 
 :::
@@ -126,18 +141,30 @@ Slide about the workshop structure
 :::{layout-ncol="2"}
 
 :::.col
+
+:::{.fragment .fade-in fragment-index="1"}
 <p style="font-size:32px;"> An IDE is a software that facilitates writing code in general. Although **RStudio** was developed with **R** in mind, it also supports many other programming languages (e.g., Python, Javascript, C...) </p>
 :::
 
+:::
+
 :::.col
+
+:::{.fragment .fade-in fragment-index="2"}
 <p style="font-size:32px;"> Likewise, you do not need **RStudio** to use **R**. However, **RStudio** is by far the best IDE for **R** and makes the process much more efficient! </p>
 :::
+
 :::
 
-<center> Not super important, but just a distinction that I wanted to point out <center>
+:::
 
-<p style="font-size:182px;"> 🤷 </p>
 
+:::{.fragment .fade-in fragment-index="3"} 
+<center> Not super important, but just a distinction that I wanted to point out 
+
+
+<p style="font-size:182px;"> 🤷 </p></center>
+:::
 
 ## FYI 
 
@@ -261,12 +288,18 @@ Before we can do any coding, we need to open a new R script! To do that navigate
 ::: columns
 
 :::{.column width="60%"}
- 
+
+:::{.fragment .fade-in fragment-index="1"}  
 A tab named "Untitled1" will appear in your source pane. ![](images/Untitled1.png)
+:::
 
+:::{.fragment .fade-in fragment-index="2"} 
 This is where we are going to write code! 
+:::
 
+:::{.fragment .fade-in fragment-index="3"} 
 As any other file, you can later save this file anywhere on your computer. It will have the *.R* extension. 
+:::
 
 :::
 
@@ -278,7 +311,11 @@ As any other file, you can later save this file anywhere on your computer. It wi
 
 :::
 
+</br>
 
+:::{.fragment .fade-in fragment-index="4"} 
+<center> [Save your New R script to the Workshop folder and name it]{style="color: red;"} </center> 
+:::
 
 
 ## Running Code and Mathematical Operations
@@ -289,19 +326,19 @@ As any other file, you can later save this file anywhere on your computer. It wi
 
 
 :::{.column width="60%"}
-
+:::{.fragment .fade-in fragment-index="1"}
 <p style="font-size:28px;">  In Rsudio, you can either run one or more line of code at once, or run the whole R script file at once. </p>
-
+:::
 
 
 <ul style = "font-size: 26px;">
 
-:::{.fragment .fade-in fragment-index="1"}
+:::{.fragment .fade-in fragment-index="2"}
 <li> **One or more lines**: highlight the lines that you want to run and press **CTRL+Enter** (Win) or **CMD+Return** (Mac) 
  </li>
 :::
 
-:::{.fragment .fade-in fragment-index="2"}
+:::{.fragment .fade-in fragment-index="3"}
 <li> **Entire Script**: Just press **CTRL+Shift+Enter** (Win) or **CMD+Shift+Return** (Mac). </li>
 :::
 
@@ -310,8 +347,10 @@ As any other file, you can later save this file anywhere on your computer. It wi
 </ul>
 
 
-
+:::{.fragment .fade-in fragment-index="4"}
 <center> Copy the *code chunk* on the right into your R script and try running the full script. </center>
+:::
+
 
 :::
 
@@ -342,6 +381,757 @@ As any other file, you can later save this file anywhere on your computer. It wi
 
 
 ## Output 
+
+:::columns
+
+:::{.column width="60%"}
+
+You will see your code with output appear in the console.
+
+:::{.fragment .fade-in fragment-index="1"}
+*Output* is indicated by "[*n*]", where *n* represents the line of the output. 
+:::
+
+:::{.fragment .fade-in fragment-index="2"}
+Here we only have one line for output each of our inputs (the 3 math operations), but you can have more lines. 
+:::
+
+:::{.fragment .fade-in fragment-index="3"}
+The **#** sign represents comments. R will not run commented lines. Comments are good for explaining code to either your future self or to other people reading tour code!
+:::
+
+:::
+
+
+:::{.column width="40%"}
+
+
+![](images/Output_math.png)
+
+
+:::
+
+:::
+
+
+## A Note on how R Interprets Code
+
+R "reads" you code until it find the end of a *statement* (code that produces output), and then expects the following statement to appear on a new line.
+
+
+:::columns
+
+:::{.column width="50%"}
+
+:::{.fragment .fade-in fragment-index="1"}
+```r
+# The line below is a statement
+
+(4 +5)*2
+```
+
+```{r}
+(4 +5)*2
+```
+:::
+
+</br>
+
+
+:::{.fragment .fade-in fragment-index="2"}
+```r
+# The this will not run (2 statements on the same line)
+
+(4 + 5)*2  6+6
+```
+:::
+
+
+:::
+
+
+:::{.column width="50%"}
+
+:::{.fragment .fade-in fragment-index="3"}
+```r
+# This is not good prectice, but it will run.
+
+(4 +5)*   2
+
+6        +
+6
+
+```
+
+```{r}
+(4 +5)*2
+
+6 +
+6
+
+```
+:::
+
+:::
+
+:::
+
+:::{.fragment .fade-in fragment-index="4"}
+**Note:** Spacing among elements of a statement is irrelevant, but it is good practice to be reasonable and consistent.
+:::
+
+
+## Objects
+
+Just as many other programming languages, R is **object**-oriented. You can think of objects as containers where information is stored.
+
+:::{.fragment .fade-in fragment-index="1"}
+To create an object in R, you use the "<" + "-" (assignment operator):
+:::
+
+:::columns
+
+
+::: {.column width="50%"}
+
+:::{.fragment .fade-in fragment-index="2"}
+```r
+# This means x "is" (4 +5)*2. you can name objects whatever you want but the name cannot begin with a number or special characters (?, !, etc...). 
+
+x <- (4 +5)*2
+```
+
+```{r}
+x <- (4 +5)*2
+```
+:::
+:::
+
+::: {.column width="50%"}
+
+:::{.fragment .fade-in fragment-index="2"}
+<p style="font-size:24px;"> The keyboard shortcut for the assignment operator is **"alt" + "-"** (Win) or **"Option" + "-"** (Mac). </p>
+:::
+
+:::
+
+:::
+
+
+</br>
+
+:::columns
+
+
+::: {.column width="60%"}
+
+:::{.fragment .fade-in fragment-index="3"}
+No output is produced. However, you will now see the *x* object appear in your environment!
+:::
+
+
+:::{.fragment .fade-in fragment-index="4"}
+R now knows that whenever you write "x" in your code, you mean "18". 
+
+```r
+R now knows that "x" means 18
+
+x + 3 
+```
+
+```{r}
+x <- (4 +5)*2
+
+x + 3
+```
+:::
+
+:::
+
+::: {.column width="40%"}
+
+:::{.fragment .fade-in fragment-index="3"}
+![](images/Object_x.png)
+:::
+:::
+
+:::
+
+
+
+
+
+## Types of Objects and Dimensions
+
+Just like there are many different types of containers (boxes, drawers, fridges, etc...), there are many different types of R objects! 
+
+:::{.fragment .fade-in fragment-index="1"}
+The *x* objects that we just created is technically a **numeric vector** (type of object) of **length 1** 🤔
+:::
+
+:::{.fragment .fade-in fragment-index="2"}
+A vector is a **one-dimensional** (dimensions of object) collection of numbers. To create a vector we can do the following:
+:::
+
+:::{.fragment .fade-in fragment-index="3"}
+```r
+# `c()` is a function (more on factions later), and it stands for "concatenate". The `c()` comes up a lot and has many different uses.
+
+y <- c(1, 5, 7, 9)
+
+# math operations can be applied to vectors! It turns out that for computers it is much more efficient to do operations a vectors instead of one at a time.
+
+y - 3
+```
+
+```{r}
+y <- c(1, 5, 7, 9)
+
+y - 3
+```
+:::
+
+</br>
+
+:::{.fragment .fade-in fragment-index="3"}
+<center> The concept of dimensions will become clearer later. In the meantime, can you think of some objects that may have more than 1 dimensions? 🤓 </center>
+:::
+
+## Quick Note on Character Vectors 
+
+So far we have only dealt with numbers, but R also handles characters quite well! 
+
+:::{.fragment .fade-in fragment-index="1"}
+```r
+# Characters need to be enclosed within "" or ''. This is so that R knows you are not referring to an object ("x" is a character, just x is expected to be an object in your environment)
+
+x <- "Hello"
+y <- c("hello", "world", "what time is it?")
+```
+
+```{r}
+x <- "Hello"
+
+y <- c("hello", "world", ",what time is it?")
+```
+:::
+
+:::{.fragment .fade-in fragment-index="2"}
+Although it may sound obvious, you cannot apply any math operations to character vectors
+
+```r
+# this will not run
+
+y - 3
+```
+:::
+
+:::{.fragment .fade-in fragment-index="3"}
+Also note that you can create character vectors that have numbers in them, but you will not be able to apply math operations to them:
+
+```r
+x <- c("2", "23", "4")
+
+# this will not run
+
+x - 6 
+```
+:::
+
+:::{.fragment .fade-in fragment-index="4"}
+It is sometimes the case that some of the data that you open will have numbers saved as characters, and you will be stuck wondering why your code does not run. so it is good to check that you are using the right type of object when code is not working. 
+:::
+
+## Functions
+
+A function is something that takes one or more objects as input and produces an output. 
+
+:::columns
+
+::: {.column width="50%"}
+
+:::{.fragment .fade-in fragment-index="1"}
+R interprets anything that stars with letters and is followed by a "(" as a function, after which it executes the function until the next ")".
+
+```r
+x <- c(2,10, 4, 11, 12, 6)
+
+# `sum()` is a function; x is the input and the sum of the elemnts of x is the output
+
+sum(x)
+```
+
+```{r}
+x <- c(2,10, 4, 11, 12, 6)
+
+sum(x)
+```
+:::
+:::
+
+::: {.column width="50%"}
+
+:::{.fragment .fade-in fragment-index="2"}
+Functions also have **arguments**, that allow you to tweak what the function does.
+
+```r
+# `Sort()`, by default, sorts vectors from smallest to largest (or in alphabetical order if you give it a character!)
+# Here, we use "decreasing = TRUE" to sort from largest to smallest. 
+
+sort(x, decreasing = TRUE)
+```
+
+```{r}
+# `Sort()`, by default, sorts vectors from smallest to largest (or in alphabetical order if you give it a character vector!)
+# Here, we use "decreasing = TRUE" to sort from largest to smallest. 
+
+sort(x, decreasing = TRUE)
+```
+:::
+:::
+
+:::
+
+:::{.fragment .fade-in fragment-index="3"}
+R comes with many built in functions. You can find a list [here](https://stat.ethz.ch/R-manual/R-devel/library/base/html/00Index.html){target="_blank"}. However, your best friend for finding the function you need is Google (or chatGPT for simple coding questions!)
+
+
+![](images/ChatGPT_logo.png){.absolute bottom=30 right=250 width="170" height="150"}
+
+
+
+![](images/Google_logo.png){.absolute bottom=30 left=250 width="270" height="100"}
+:::
+
+
+## The Help Menu
+
+Let's say I ask Google for an R function that sorts vectors and I find the `sort()` function!... But how do I know about its arguments? How do I know whether it sorts in ascending or descending order?
+
+:::{.fragment .fade-in fragment-index="1"}
+<center> This is where RSstudio's **help menu** comes to the rescue! 😀 </center>
+:::
+
+
+:::columns
+
+::: {.column width="50%"}
+
+:::{.fragment .fade-in fragment-index="2"}
+There are multiple ways to open the help menu. Try the following:
+
+```r
+# run the empty function with "?" in front of it
+
+?sort()
+
+# Alternatively you can also highlight the function (just the function, not the "()") and press F1.
+```
+:::
+
+<ul style = "font-size: 22px;">
+
+:::{.fragment .fade-in fragment-index="3"}
+<li> **Description**: Brief description of that the function does. </li>
+:::
+
+:::{.fragment .fade-in fragment-index="4"}
+<li> **Usage**: Shows default arguments (i.e., "decreasing" is set to FALSE unless you don't say otherwise). </li>
+:::
+
+:::{.fragment .fade-in fragment-index="5"}
+<li> **Arguments**: all the function arguments and what each one does! </li>
+:::
+
+</ul>
+
+:::{.fragment .fade-in fragment-index="6"}
+There's much more going on here, but notice the `{base}` after the name of the function. That is the **Package** the function comes from 🧐
+:::
+
+:::
+
+::: {.column width="50%"}
+
+:::{.fragment .fade-in fragment-index="2"}
+![](images/Help_sort.png){width="80%"}
+:::
+
+:::
+
+:::
+
+
+## Packages
+
+Usually, the base R functions are not enough for most of the tasks that one needs to accomplish in R. Often people have to create their own custom functions.
+
+:::{.fragment .fade-in fragment-index="1"}
+A **package** is simply a collection of functions that other users make for everyone out of the kindness of their heart! 
+:::
+
+:::{.fragment .fade-in fragment-index="2"}
+Let us install a package that makes opening data in R very smooth, the `rio` package:
+
+
+```r
+# This is how you install packages from CRAN (explained below)
+
+install.packages("rio")
+```
+:::
+
+:::columns
+
+::: {.column width="50%"}
+
+:::{.fragment .fade-in fragment-index="3"}
+<p style="font-size:22px;"> The `install.packages()` function installs packages from the [comprehensive R archive network](https://cran.r-project.org){target="_blank"} (CRAN). Among other things, CRAN maintains a library of packages made by users. </p>
+:::
+
+:::{.fragment .fade-in fragment-index="4"}
+<p style="font-size:22px;"> The process to get a package on CRAN is a bit lengthy (and sometimes packages get removed), so some people just upload their packages to [Github](https://cran.r-project.org/web/packages/githubinstall/vignettes/githubinstall.html){target="_blank"}. </p>
+:::
+
+:::{.fragment .fade-in fragment-index="5"}
+<p style="font-size:22px;"> To see all of the packages installed in your RStudio, you can navigate to your viewer pane and select "packages". </p>
+:::
+
+:::
+
+::: {.column width="50%"}
+
+:::{.fragment .fade-in fragment-index="5"}
+![](images/Packages_viewer.png){width="80%"}
+:::
+
+:::
+
+:::
+
+## Let's Look at Some Data: Load the data
+
+Let's open the **Titanic_Survival.csv** data set with the `import()` function from the `rio` package. This takes a few steps
+
+
+```r
+# to load the functions from a package you need to run the `library(package)` funcition first
+
+library(rio)
+
+# rio also suggests to add a few extra packages, so also run the line below. It is the case that packages have functions that use functions from other packages to run, hence why rio suggests to also install other packages here
+
+install_formats()
+```
+:::{.fragment .fade-in fragment-index="1"}
+Since the data is a separate file, R needs to know where that file is on your computer. There are two ways (more actually) of doing that:
+:::
+
+:::{.fragment .fade-in fragment-index="2"}
+1. <p style="font-size:24px;"> Either you use the absolute file path (i.e., the unique address that identifies the location of all files on your computer) </p>
+:::
+
+:::{.fragment .fade-in fragment-index="3"}
+2. <p style="font-size:24px;"> You Save your data in you *working directory* (WD; the default folder where RStudio saves/looks for files). Your current WD is always displayed at the top of the R console pane next to the R version number. </p>
+:::
+
+:::{.fragment .fade-in fragment-index="4"}
+```r
+# Make sure that the file is in your current working directory and run the line below. Also, notice how I save the data as an object
+
+dat <- import("Titanic_Survival.csv")
+```
+```{r}
+library(rio)
+dat <- import("Data workshop/Titanic_Survival.csv")
+```
+:::
+
+## Let's Look at Some Data: Explore the data.
+
+To look at the full data, you can simply click on the data object that just appeared in your environment. However, there are also functions that can help us to get as sense of the data we are dealing with:
+
+
+:::columns
+
+::: {.column width="50%"}
+
+:::{.fragment .fade-in fragment-index="1"}
+```r
+# the `str()` function tells us how many rows/columns our data has, what the variables are, and what type of variables we are dealing with (integers, numeric, characters)
+
+str(dat)
+```
+
+```{r}
+str(dat)
+```
+
+:::
+
+:::
+
+::: {.column width="50%"}
+
+:::{.fragment .fade-in fragment-index="2"}
+Note the "$" operator in front of the variables. When dealing with **data.frame** objects, you can manipulate specific variables this way:
+
+```r
+# dat$age means the "age" column in the "dat" data.frame object. The "na.rm = TRUE" let's the `mean()` function know to ignore the missing values (which are represented by "NA" in R) when calculating the mean. 
+
+mean(dat$age, na.rm = TRUE)
+```
+
+```{r}
+mean(dat$age, na.rm = TRUE)
+```
+:::
+
+:::{.fragment .fade-in fragment-index="3"}
+By the way, how does one know what type of object they are dealing with? Although here we already know, the `class()` function is pretty handy in most cases:
+
+```r
+class(dat)
+```
+
+```{r}
+class(dat)
+```
+:::
+
+:::
+
+:::
+
+## Back to dimensions? Subsetting Objects
+
+Some slides back, I mentioned the concept of dimensions. data.frame objects have **2 dimensions**, *rows* and *columns*. 
+
+:::{.fragment .fade-in fragment-index="1"}
+Knowing the number of dimensions of objects lets us **subset** objects. You can subset 2D objects by referring to the indices of their dimensions in this way "*object_name*[*row number*, *column number*]”:
+:::
+
+:::columns
+
+::: {.column width="50%"}
+
+:::{.fragment .fade-in fragment-index="1"}
+```r
+# Select the elent of [row 1, column 1] of the "dat" object
+
+dat[1,1]
+```
+
+```{r}
+
+dat[1,1]
+```
+:::
+
+:::{.fragment .fade-in fragment-index="2"}
+```r
+# You can select the entire 2nd row of the "dat" object. If you leave a dimension empty when subsetting, it mean "all of this dimensions".
+
+dat[2,]
+```
+
+```{r}
+dat[2,]
+```
+:::
+
+:::{.fragment .fade-in fragment-index="3"}
+```r
+# the ":" operator can be used to create a sequence of numbers from the left to the right
+# this will select from the 1st to 7th element of column 1 of the "dat" object
+
+dat[1:7,1]
+```
+
+```{r}
+dat[1:7,1]
+```
+:::
+
+:::
+
+::: {.column width="50%"}
+
+:::{.fragment .fade-in fragment-index="4"}
+```r
+# You can remove row or columns this way
+# The "dat_2" object will be "dat" without the first row. `nrow()` counts the rows of an object. 
+
+dat_2 <- dat[-1,]
+
+nrow(dat_2)
+```
+
+```{r}
+dat_2 <- dat[-1,]
+
+nrow(dat_2)
+```
+:::
+
+:::{.fragment .fade-in fragment-index="5"}
+```r
+# You refer to non-adjacent columns/rows through the `c()` function
+# select element 1,4,6 of column 6 of "dat" object
+
+dat[c(1,4,6) ,6]
+```
+
+```{r}
+dat[c(1,4,6) ,6]
+```
+:::
+
+:::{.fragment .fade-in fragment-index="6"}
+```r
+# To subset 1D elements, you simply do this
+# Get the 5th element of the "x" object
+
+x <- c(3, 2, 5, 10, 23)
+x[5]
+
+```
+
+```{r}
+x <- c(3, 2, 5, 10, 23)
+x[5]
+```
+:::
+
+:::
+
+:::
+
+## The Importance of Knowing your Objects and Their Dimensions
+
+You may think that you have not learned much so far. But I see learning R this way:
+
+:::{.fragment .fade-in fragment-index="1"}
+> Give a man a fish, and you feed him for a day; teach a man to fish and you feed him for a lifetime. 🐡
+:::
+
+:::{.fragment .fade-in fragment-index="2"}
+These things that I would like you to always keep in mind as you work with R:
+:::
+
+:::columns
+
+::: {.column width="50%"}
+
+<ul style = "font-size: 22px;">
+
+:::{.fragment .fade-in fragment-index="3"}
+<li> **Objects** are at the heart of R. Always make sure you know what type of objects you are dealing with. </li>
+:::
+
+:::{.fragment .fade-in fragment-index="4"}
+<li> If objects hold some specific information that you need, there is *always* a way to extract that information. </li> 
+:::
+
+:::{.fragment .fade-in fragment-index="5"}
+<li> If you know the structure of the object you are dealing with, then you know how to extract the information that you need. </li>
+:::
+</ul>
+
+:::
+
+::: {.column width="50%"}
+
+<ul style = "font-size: 22px;">
+
+:::{.fragment .fade-in fragment-index="6"}
+<li> The internet is your best friend. </li>
+:::
+
+:::{.fragment .fade-in fragment-index="7"}
+<li> Sometimes code will not work and you will get frustrated; that is part of the learning process. </li>
+:::
+
+:::{.fragment .fade-in fragment-index="8"}
+<li> Be creative! There are infinite ways to solve a problem in R. </li>
+:::
+
+</ul>
+
+:::
+
+:::
+
+:::{.fragment .fade-in fragment-index="9"}
+<center>  ![](images/thats_all_folks.png){width="40%"}  </center>
+:::
+
+## Your Turn: Activity 1
+
+::: {layout-ncol="2"}
+
+::: col
+
+<center>
+
+</br>
+
+<p style="font-size: 30px;">
+Open the “**Workshop Activity 1.pdf**” file.
+</p>
+
+</br>
+
+<p style="font-size: 30px;">
+
+Form groups of 3 or more people and try solving the questions together! 
+
+</p>
+
+
+</br>
+
+
+<p style="font-size: 30px;">
+
+It is fine if you can't solve all of the questions. 
+</p>
+
+
+</br>
+
+
+<p style="font-size: 30px;">
+
+I will go over the solutions to each question and also send you a file with those solutions at the end of the workshop!
+
+</p>
+
+</center>
+
+:::
+
+
+:::col
+![](images/interactive.png)
+
+:::
+:::
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
