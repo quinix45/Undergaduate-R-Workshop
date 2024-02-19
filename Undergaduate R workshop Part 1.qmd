@@ -534,8 +534,6 @@ No output is produced. However, you will now see the *x* object appear in your e
 R now knows that whenever you write "x" in your code, you mean "18". 
 
 ```r
-R now knows that "x" means 18
-
 x + 3 
 ```
 
