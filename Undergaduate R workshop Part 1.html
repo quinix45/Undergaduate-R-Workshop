@@ -404,8 +404,56 @@ Fabio Setti &amp; Sam Deng
 </div>
 
 </section>
+<section id="section" class="title-slide slide level1 center" data-transition="zoom" data-menu-title="Part 1: The Basics ">
+<h1></h1>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="col quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<center>
+<p style=" 
+
+  font-size: 2.7em;
+  font-weight:  800;
+  font-family: sans-serif;
+  smargin: 0 0 0px 0;
+  color: #996633;
+  font-family: " league="" gothic",="" impact,="" sans-serif;="" line-height:="" 0.5em;="" letter-spacing:="" 0.04em;="" text-transform:="" capitalize;="" text-shadow:="" none;="" "=""> Part 1: The Basics 
+  
+</p>
+<ul style="font-size: 22px;">
+<li>
+R and RStudio
+</li>
+<li>
+The RStudio Interface
+</li>
+<li>
+Running Code
+</li>
+<li>
+Objects
+</li>
+<li>
+Functions
+</li>
+<li>
+Packages
+</li>
+<li>
+Importing Data and Subsetting
+</li>
+</ul>
+</center>
+</div>
+<div class="col quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img data-src="images/Workshop.png"></p>
+</div>
+</div>
+</div>
+</section>
+
 <section>
-<section id="section" class="title-slide slide level1 center" data-transition="zoom" data-menu-title="Introduction to R and RStudio">
+<section id="section-1" class="title-slide slide level1 center" data-transition="zoom" data-menu-title="Introduction to R and RStudio">
 <h1></h1>
 <div class="quarto-layout-panel" data-layout-ncol="2">
 <div class="quarto-layout-row">
@@ -542,7 +590,7 @@ An IDE is a software that facilitates writing code in general. Although <strong>
 <div class=".col quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div class="fragment fade-in" data-fragment-index="2">
 <p style="font-size:32px;">
-Likewise, you do not need <strong>RStudio</strong> to use <strong>R</strong>. However, <strong>RStudio</strong> is by far the best IDE for <strong>R</strong> and makes the process much more efficient!
+Likewise, you do not need <strong>RStudio</strong> to use <strong>R</strong>. However, <strong>RStudio</strong> is by far the best IDE for <strong>R</strong> and it makes the process much more efficient!
 </p>
 </div>
 </div>
@@ -613,7 +661,7 @@ The RStudio interface is divided into <strong>4 panes</strong>:
 </div>
 </section></section>
 <section>
-<section id="section-1" class="title-slide slide level1 center" data-transition="zoom" data-menu-title="R Basics">
+<section id="section-2" class="title-slide slide level1 center" data-transition="zoom" data-menu-title="R Basics">
 <h1></h1>
 <div class="quarto-layout-panel" data-layout-ncol="2">
 <div class="quarto-layout-row">
@@ -665,7 +713,7 @@ The RStudio interface is divided into <strong>4 panes</strong>:
 <section id="running-code-and-mathematical-operations" class="slide level2">
 <h2>Running Code and Mathematical Operations</h2>
 <p style="font-size:32px;">
-R can perform basic and advanced mathematical operations. At the same time, let’s see how to run some code:
+R can perform just about any mathematical operation. At the same time, let’s see how to run some code:
 </p>
 <div class="columns">
 <div class="column" style="width:60%;">
@@ -682,7 +730,7 @@ In Rsudio, you can either run one or more line of code at once, or run the whole
 </div>
 <div class="fragment fade-in" data-fragment-index="3">
 <li>
-<strong>Entire Script</strong>: Just press <strong>CTRL+Shift+Enter</strong> (Win) or <strong>CMD+Shift+Return</strong> (Mac).
+<strong>Entire Script</strong>: press <strong>CTRL+Shift+Enter</strong> (Win) or <strong>CMD+Shift+Return</strong> (Mac).
 </li>
 </div>
 </ul>
@@ -717,8 +765,9 @@ Copy the <em>code chunk</em> on the right into your R script and try running the
 <div class="fragment fade-in" data-fragment-index="2">
 <p>Here we only have one line for output each of our inputs (the 3 math operations), but you can have more lines.</p>
 </div>
+<p><br></p>
 <div class="fragment fade-in" data-fragment-index="3">
-<p>The <strong>#</strong> sign represents comments. R will not run commented lines. Comments are good for explaining code to either your future self or to other people reading tour code!</p>
+<p>The <strong>#</strong> sign represents comments. R will not run commented lines. Comments are good for explaining code to either your future self or to other people reading your code!</p>
 </div>
 </div><div class="column" style="width:40%;">
 <p><img data-src="images/Output_math.png"></p>
@@ -727,7 +776,7 @@ Copy the <em>code chunk</em> on the right into your R script and try running the
 </section>
 <section id="a-note-on-how-r-interprets-code" class="slide level2">
 <h2>A Note on how R Interprets Code</h2>
-<p>R “reads” you code until it find the end of a <em>statement</em> (code that produces output), and then expects the following statement to appear on a new line.</p>
+<p>R “reads” code until it find the end of a <em>statement</em> (code that produces output), and then expects the following statement to appear on a new line.</p>
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="fragment fade-in" data-fragment-index="1">
@@ -822,11 +871,11 @@ The keyboard shortcut for the assignment operator is <strong>“alt” + “-”
 <p>A vector is a <strong>one-dimensional</strong> (dimensions of object) collection of numbers. To create a vector we can do the following:</p>
 </div>
 <div class="fragment fade-in" data-fragment-index="3">
-<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href=""></a><span class="co"># `c()` is a function (more on factions later), and it stands for "concatenate". The `c()` comes up a lot and has many different uses.</span></span>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href=""></a><span class="co"># `c()` is a function (more on functions later), and it stands for "concatenate". The `c()` binds things together. This function comes up a lot and has many different applications.</span></span>
 <span id="cb11-2"><a href=""></a></span>
 <span id="cb11-3"><a href=""></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">9</span>)</span>
 <span id="cb11-4"><a href=""></a></span>
-<span id="cb11-5"><a href=""></a><span class="co"># math operations can be applied to vectors! It turns out that for computers it is much more efficient to do operations a vectors instead of one at a time.</span></span>
+<span id="cb11-5"><a href=""></a><span class="co"># math operations can be applied to vectors! It turns out that for computers it is much more efficient to do operations as vectors instead of one at a time.</span></span>
 <span id="cb11-6"><a href=""></a></span>
 <span id="cb11-7"><a href=""></a>y <span class="sc">-</span> <span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell">
@@ -934,7 +983,7 @@ This is where RSstudio’s <strong>help menu</strong> comes to the rescue! 😀
 </div>
 <div class="fragment fade-in" data-fragment-index="4">
 <li>
-<strong>Usage</strong>: Shows default arguments (i.e., “decreasing” is set to FALSE unless you don’t say otherwise).
+<strong>Usage</strong>: Shows default values of arguments (i.e., “decreasing” is set to FALSE unless you say otherwise).
 </li>
 </div>
 <div class="fragment fade-in" data-fragment-index="5">
@@ -991,7 +1040,7 @@ To see all of the packages installed in your RStudio, you can navigate to your v
 </section>
 <section id="lets-look-at-some-data-load-the-data" class="slide level2">
 <h2>Let’s Look at Some Data: Load the data</h2>
-<p>Let’s open the <strong>Titanic_Survival.csv</strong> data set with the <code>import()</code> function from the <code>rio</code> package. This takes a few steps</p>
+<p>Let’s open the <strong>Titanic_Survival.csv</strong> data set with the <code>import()</code> function from the <code>rio</code> package. This takes a few steps:</p>
 <div class="sourceCode" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href=""></a><span class="co"># to load the functions from a package you need to run the `library(package)` funcition first</span></span>
 <span id="cb22-2"><a href=""></a></span>
 <span id="cb22-3"><a href=""></a><span class="fu">library</span>(rio)</span>
@@ -1050,7 +1099,7 @@ You Save your data in you <em>working directory</em> (WD; the default folder whe
 </div>
 </div><div class="column" style="width:50%;">
 <div class="fragment fade-in" data-fragment-index="2">
-<p>Note the “$” operator in front of the variables. When dealing with <strong>data.frame</strong> objects, you can manipulate specific variables this way:</p>
+<p>Note the “$” operator in front of the variables. When dealing with <strong>data.frame</strong> objects, you can interact with specific variables this way:</p>
 <div class="sourceCode" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href=""></a><span class="co"># dat$age means the "age" column in the "dat" data.frame object. The "na.rm = TRUE" let's the `mean()` function know to ignore the missing values (which are represented by "NA" in R) when calculating the mean. </span></span>
 <span id="cb26-2"><a href=""></a></span>
 <span id="cb26-3"><a href=""></a><span class="fu">mean</span>(dat<span class="sc">$</span>age, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1074,7 +1123,7 @@ You Save your data in you <em>working directory</em> (WD; the default folder whe
 </section>
 <section id="back-to-dimensions-subsetting-objects" class="slide level2">
 <h2>Back to dimensions? Subsetting Objects</h2>
-<p>Some slides back, I mentioned the concept of dimensions. data.frame objects have <strong>2 dimensions</strong>, <em>rows</em> and <em>columns</em>.</p>
+<p>Some slides back, I mentioned the concept of dimensions. <code>data.frame</code> objects have <strong>2 dimensions</strong>, <em>rows</em> and <em>columns</em>.</p>
 <div class="fragment fade-in" data-fragment-index="1">
 <p>Knowing the number of dimensions of objects lets us <strong>subset</strong> objects. You can subset 2D objects by referring to the indices of their dimensions in this way “<em>object_name</em>[<em>row number</em>, <em>column number</em>]”:</p>
 </div>
@@ -1218,7 +1267,7 @@ Be creative! There are infinite ways to solve a problem in R.
 <center>
 <p><br></p>
 <p style="font-size: 30px;">
-Open the “<strong>Workshop Activity 1.pdf</strong>” file.
+Open the “<strong>Workshop-Activity-1.pdf</strong>” file.
 </p>
 <p><br></p>
 <p style="font-size: 30px;">
@@ -1239,12 +1288,59 @@ It is fine if you can’t solve all of the questions.
 </div>
 </div>
 </div>
+</section></section>
+<section id="section-3" class="title-slide slide level1 center" data-transition="zoom" data-menu-title="Part 2">
+<h1></h1>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="col quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<center>
+<p style=" 
+
+  font-size: 2.7em;
+  font-weight:  800;
+  font-family: sans-serif;
+  smargin: 0 0 0px 0;
+  color: #996633;
+  font-family: " league="" gothic",="" impact,="" sans-serif;="" line-height:="" 0.5em;="" letter-spacing:="" 0.04em;="" text-transform:="" capitalize;="" text-shadow:="" none;="" "=""> Part 2:  
+  
+</p>
+<ul style="font-size: 22px;">
+<li>
+R and RStudio
+</li>
+<li>
+The RStudio interface
+</li>
+<li>
+Running Code
+</li>
+<li>
+Objects
+</li>
+<li>
+Functions
+</li>
+<li>
+Packages
+</li>
+<li>
+Importing data and subsetting
+</li>
+</ul>
+</center>
+</div>
+<div class="col quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img data-src="images/Workshop.png"></p>
+</div>
+</div>
+</div>
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
-<p>Undergraduate R workshop</p>
+<p>Undergraduate R workshop Spring 2024</p>
 </div>
 </div>
-</section></section>
+</section>
     </div>
   </div>
 

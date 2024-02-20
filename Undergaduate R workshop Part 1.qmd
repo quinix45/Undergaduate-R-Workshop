@@ -9,7 +9,7 @@ title-slide-attributes:
 author: "Fabio Setti & Sam Deng"
 format:
    revealjs:
-      footer: "Undergraduate R workshop"
+      footer: "Undergraduate R workshop Spring 2024"
       chalkboard: true 
       theme: Theme/R_workshop_theme.scss
       navigation-mode: linear
@@ -23,8 +23,68 @@ format:
 editor: source
 ---
 
-# {transition="zoom" data-menu-title="Introduction to R and RStudio"}
+# {transition="zoom" data-menu-title="Part 1: The Basics "}
 
+::: {layout-ncol="2"}
+
+::: col
+
+
+<center>
+
+<p style=" 
+
+  font-size: 2.7em;
+  font-weight:	800;
+  font-family: sans-serif;
+  smargin: 0 0 0px 0;
+  color: #996633;
+  font-family: "League Gothic", Impact, sans-serif;
+  line-height: 0.5em;
+  letter-spacing: 0.04em;
+  text-transform: capitalize;
+  text-shadow: none; "> Part 1: The Basics 
+  
+</p>
+
+
+
+
+<ul style = "font-size: 22px;">
+
+<li> R and RStudio </li>
+
+<li> The RStudio Interface </li> 
+
+<li> Running Code  </li>
+
+<li> Objects </li>
+
+<li> Functions </li>
+
+<li> Packages </li>
+
+<li> Importing Data and Subsetting  </li>
+
+</ul>
+
+</center>
+
+
+
+
+:::
+
+
+:::col
+![](images/Workshop.png)
+
+:::
+:::
+
+
+
+# {transition="zoom" data-menu-title="Introduction to R and RStudio"}
 
 ::: {layout-ncol="2"}
 
@@ -49,9 +109,7 @@ editor: source
   
 </p>
 
-
 :::
-
 
 :::col
 ![](images/R_Rstudio_confused.png)
@@ -151,7 +209,7 @@ editor: source
 :::.col
 
 :::{.fragment .fade-in fragment-index="2"}
-<p style="font-size:32px;"> Likewise, you do not need **RStudio** to use **R**. However, **RStudio** is by far the best IDE for **R** and makes the process much more efficient! </p>
+<p style="font-size:32px;"> Likewise, you do not need **RStudio** to use **R**. However, **RStudio** is by far the best IDE for **R** and it makes the process much more efficient! </p>
 :::
 
 :::
@@ -320,7 +378,7 @@ As any other file, you can later save this file anywhere on your computer. It wi
 
 ## Running Code and Mathematical Operations
 
-<p style="font-size:32px;">  R can perform basic and advanced mathematical operations. At the same time, let's see how to run some code: </p>
+<p style="font-size:32px;">  R can perform just about any mathematical operation. At the same time, let's see how to run some code: </p>
 
 ::: columns
 
@@ -339,7 +397,7 @@ As any other file, you can later save this file anywhere on your computer. It wi
 :::
 
 :::{.fragment .fade-in fragment-index="3"}
-<li> **Entire Script**: Just press **CTRL+Shift+Enter** (Win) or **CMD+Shift+Return** (Mac). </li>
+<li> **Entire Script**: press **CTRL+Shift+Enter** (Win) or **CMD+Shift+Return** (Mac). </li>
 :::
 
 
@@ -396,8 +454,10 @@ You will see your code with output appear in the console.
 Here we only have one line for output each of our inputs (the 3 math operations), but you can have more lines. 
 :::
 
+</br>
+
 :::{.fragment .fade-in fragment-index="3"}
-The **#** sign represents comments. R will not run commented lines. Comments are good for explaining code to either your future self or to other people reading tour code!
+The **#** sign represents comments. R will not run commented lines. Comments are good for explaining code to either your future self or to other people reading your code!
 :::
 
 :::
@@ -416,7 +476,7 @@ The **#** sign represents comments. R will not run commented lines. Comments are
 
 ## A Note on how R Interprets Code
 
-R "reads" you code until it find the end of a *statement* (code that produces output), and then expects the following statement to appear on a new line.
+R "reads" code until it find the end of a *statement* (code that produces output), and then expects the following statement to appear on a new line.
 
 
 :::columns
@@ -573,11 +633,11 @@ A vector is a **one-dimensional** (dimensions of object) collection of numbers. 
 
 :::{.fragment .fade-in fragment-index="3"}
 ```r
-# `c()` is a function (more on factions later), and it stands for "concatenate". The `c()` comes up a lot and has many different uses.
+# `c()` is a function (more on functions later), and it stands for "concatenate". The `c()` binds things together. This function comes up a lot and has many different applications.
 
 y <- c(1, 5, 7, 9)
 
-# math operations can be applied to vectors! It turns out that for computers it is much more efficient to do operations a vectors instead of one at a time.
+# math operations can be applied to vectors! It turns out that for computers it is much more efficient to do operations as vectors instead of one at a time.
 
 y - 3
 ```
@@ -734,7 +794,7 @@ There are multiple ways to open the help menu. Try the following:
 :::
 
 :::{.fragment .fade-in fragment-index="4"}
-<li> **Usage**: Shows default arguments (i.e., "decreasing" is set to FALSE unless you don't say otherwise). </li>
+<li> **Usage**: Shows default values of arguments (i.e., "decreasing" is set to FALSE unless you say otherwise). </li>
 :::
 
 :::{.fragment .fade-in fragment-index="5"}
@@ -809,7 +869,7 @@ install.packages("rio")
 
 ## Let's Look at Some Data: Load the data
 
-Let's open the **Titanic_Survival.csv** data set with the `import()` function from the `rio` package. This takes a few steps
+Let's open the **Titanic_Survival.csv** data set with the `import()` function from the `rio` package. This takes a few steps:
 
 
 ```r
@@ -872,7 +932,7 @@ str(dat)
 ::: {.column width="50%"}
 
 :::{.fragment .fade-in fragment-index="2"}
-Note the "$" operator in front of the variables. When dealing with **data.frame** objects, you can manipulate specific variables this way:
+Note the "$" operator in front of the variables. When dealing with **data.frame** objects, you can interact with specific variables this way:
 
 ```r
 # dat$age means the "age" column in the "dat" data.frame object. The "na.rm = TRUE" let's the `mean()` function know to ignore the missing values (which are represented by "NA" in R) when calculating the mean. 
@@ -903,7 +963,7 @@ class(dat)
 
 ## Back to dimensions? Subsetting Objects
 
-Some slides back, I mentioned the concept of dimensions. data.frame objects have **2 dimensions**, *rows* and *columns*. 
+Some slides back, I mentioned the concept of dimensions. `data.frame` objects have **2 dimensions**, *rows* and *columns*. 
 
 :::{.fragment .fade-in fragment-index="1"}
 Knowing the number of dimensions of objects lets us **subset** objects. You can subset 2D objects by referring to the indices of their dimensions in this way "*object_name*[*row number*, *column number*]”:
@@ -947,7 +1007,7 @@ dat[1:7,1]
 ```
 
 ```{r}
-dat[1:7,1]
+dat[1:7,1]     
 ```
 :::
 
@@ -1075,7 +1135,7 @@ These things that I would like you to always keep in mind as you work with R:
 </br>
 
 <p style="font-size: 30px;">
-Open the “**Workshop Activity 1.pdf**” file.
+Open the “**Workshop-Activity-1.pdf**” file.
 </p>
 
 </br>
@@ -1117,7 +1177,64 @@ I will go over the solutions to each question and also send you a file with thos
 :::
 
 
+# {transition="zoom" data-menu-title="Part 2"}
 
+::: {layout-ncol="2"}
+
+::: col
+
+
+<center>
+
+<p style=" 
+
+  font-size: 2.7em;
+  font-weight:	800;
+  font-family: sans-serif;
+  smargin: 0 0 0px 0;
+  color: #996633;
+  font-family: "League Gothic", Impact, sans-serif;
+  line-height: 0.5em;
+  letter-spacing: 0.04em;
+  text-transform: capitalize;
+  text-shadow: none; "> Part 2:  
+  
+</p>
+
+
+
+
+<ul style = "font-size: 22px;">
+
+<li> R and RStudio </li>
+
+<li> The RStudio interface </li> 
+
+<li> Running Code  </li>
+
+<li> Objects </li>
+
+<li> Functions </li>
+
+<li> Packages </li>
+
+<li> Importing data and subsetting  </li>
+
+</ul>
+
+</center>
+
+
+
+
+:::
+
+
+:::col
+![](images/Workshop.png)
+
+:::
+:::
 
 
 
