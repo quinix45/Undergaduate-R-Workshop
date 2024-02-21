@@ -1,4 +1,4 @@
-# Undergaduate R Workshop
+# Undergraduate R Workshop
 
 
 An undergraduate R Workshop at Fordham University, Psychology department. 
