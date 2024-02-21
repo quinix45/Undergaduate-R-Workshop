@@ -1231,12 +1231,14 @@ I will go over the solutions to each question and also send you a file with thos
 
 Besides subsetting, the `dplyr` package offers many functions for data manipulation. 
 
+
+:::{.fragment .fade-in fragment-index="1"}
 - subsetting: select and manipulate data based on its position or condition within the data structure.
 
 - `dplyr`: provides a coherent set of verbs that help users manipulate data in a clear, and efficient way.
 
 <center> Here are some of the functions for data manipulation that `dplyr` offers:  </center>
-
+:::
 </br>
 
 
@@ -1244,25 +1246,35 @@ Besides subsetting, the `dplyr` package offers many functions for data manipulat
 
 ::: col
 
+
+:::{.fragment .fade-in fragment-index="2"}
 `filter()`: picks cases based on their values
-
+:::
 </br>
 
+:::{.fragment .fade-in fragment-index="3"}
 `select()`: picks variables based on their names
-
+:::
 </br>
 
+:::{.fragment .fade-in fragment-index="4"}
 `arrange()`: changes the ordering of the rows 
+:::
 
 :::
 
 :::col
 
+:::{.fragment .fade-in fragment-index="5"}
 `mutate()`: adds new variables that are functions of existing variables
+:::
 
 </br>
 
+:::{.fragment .fade-in fragment-index="7"}
 `summarise()`: reduces multiple values down to a single summary
+:::
+
 :::
 
 :::
@@ -1278,14 +1290,16 @@ Besides subsetting, the `dplyr` package offers many functions for data manipulat
 data("starwars")
 ```
 
-
+:::{.fragment .fade-in fragment-index="1"}
 - The **pipe operator**, `%>%`, is a powerful feature in R. 
 
   - It allows us to chain together operations in a linear sequence
   
   - `%>%` is like saying “then”
+:::
 
 
+:::{.fragment .fade-in fragment-index="2"}
 ```r
 library(dplyr)
 
@@ -1299,7 +1313,7 @@ result <- numbers %>%
 
 
 ```
-
+:::
 
 ```{r}
 library(dplyr)
@@ -1334,8 +1348,12 @@ data("starwars")
 
 ::: col
 
-`ggplot2` is a powerful and widely used data visualization package in R. It’s part of the `tidyverse` package, a collection of R packages designed for data science.  
 
+:::{.fragment .fade-in fragment-index="1"}
+`ggplot2` is a powerful and widely used data visualization package in R. It’s part of the `tidyverse` package, a collection of R packages designed for data science.  
+:::
+
+:::{.fragment .fade-in fragment-index="2"}
 1. Every ggplot begins with the `ggplot()` function
 
 ```r
@@ -1352,12 +1370,13 @@ dat <- dplyr::starwars
 ggplot(dat)
 
 ```
-
+:::
 
 :::
 
 :::col
 
+:::{.fragment .fade-in fragment-index="3"}
 2. Tell ggplot what goes on the x/y axes, we use the aesthetics argument aes
 
 ```r
@@ -1368,7 +1387,7 @@ ggplot(starwars, aes(x = height, y = mass))
 ```{r}
 ggplot(dat, aes(x = height, y = mass))
 ```
-
+:::
 
 :::
 
@@ -1446,16 +1465,21 @@ ggplot(dat, aes(x = height, y = mass, color = gender)) +
 
 :::{.column width="40%"}
 
+:::{.fragment .fade-in fragment-index="1"}
 `Color = gender`: it uses the ‘gender’ variable to color-code the points on the plot
+:::
 
-
+:::{.fragment .fade-in fragment-index="2"}
 `Labs(title = …., x = …, y = …, color = …)`: customizes the plot’s main title, labels for the x/y axes, and color legend
+:::
 
+:::{.fragment .fade-in fragment-index="3"}
 `Theme_minimal()`: it applies a minimalistic theme to the plot
+:::
 
-
+:::{.fragment .fade-in fragment-index="4"}
 `Theme(legend.position = …)`: further customizes the appearance of plot components
-
+:::
 
 :::
 
@@ -1470,7 +1494,9 @@ ggplot(dat, aes(x = height, y = mass, color = gender)) +
 ::: {.column width="50%"}
 
 
-<center> Background </center>
+<center> **Background** </center>
+
+</br>
 
 PlantGrowth data (a built-in dataset in R): contains data on the weight of plants grown in three different conditions. 
 
@@ -1478,13 +1504,18 @@ PlantGrowth data (a built-in dataset in R): contains data on the weight of plant
 data("PlantGrowth")
 ```
 
-Research question 1:
+</br>
+
+:::{.fragment .fade-in fragment-index="1"}
+**Research question:**
 
 - H0: the average weights of the control group and treatment 1 group are equal
 - H1: the average weights of two groups are not equal
+:::
 
+:::{.fragment .fade-in fragment-index="2"}
 Independent-samples t test!
-
+:::
 
 
 :::
@@ -1533,19 +1564,31 @@ reactable(data = dat_wide[,2:4],
 
 ::: {layout-ncol="2"}
 
-::: {.column width="50%"}
+:::{.column width="50%"}
+
 
 `t.test()`: is used to perform t-tests in R
 
+ </br>
+
+:::{.fragment .fade-in fragment-index="1"}
 `PlantGrowth$weight[PlantGrowth$group == "ctrl"`: select the ‘weight’ values from the PlantGrowth dataset for all observations under the control group
+:::
 
+ </br>
+
+:::{.fragment .fade-in fragment-index="2"}
 `PlantGrowth$weight[PlantGrowth$group == "trt1"`: select the ‘weight’ values from the PlantGrowth dataset for all observations under the treatment 1 group
+:::
 
+:::{.fragment .fade-in fragment-index="3"}
 `Alternative = "two.sided"`: this is used for a two-tailed t-test
+:::
 
 
+:::{.fragment .fade-in fragment-index="4"}
 `var.equal = TRUE`: assumes equal variance for the t-test
-
+:::
 
 :::
 
@@ -1555,15 +1598,24 @@ reactable(data = dat_wide[,2:4],
 </br> 
 
 ```r
-t t.test(PlantGrowth$weight[PlantGrowth$group == "ctrl"],
-         PlantGrowth$weight[PlantGrowth$group == "trt1"],
-         alternative = "two.sided", var.equal = TRUE)
+# There are many other ways to do a t-test, this is just one of them
+
+control <- PlantGrowth$weight[PlantGrowth$group == "ctrl"]
+treatment_1 <- PlantGrowth$weight[PlantGrowth$group == "trt1"]
+
+t.test(control,
+       treatment_1,
+       alternative = "two.sided", var.equal = TRUE)
 ```
 
 
 ```{r}
-t.test(PlantGrowth$weight[PlantGrowth$group == "ctrl"],
-       PlantGrowth$weight[PlantGrowth$group == "trt1"],
+
+control <- PlantGrowth$weight[PlantGrowth$group == "ctrl"]
+treatment_1 <- PlantGrowth$weight[PlantGrowth$group == "trt1"]
+
+t.test(control,
+       treatment_1,
        alternative = "two.sided", var.equal = TRUE)
 ```
 
@@ -1586,18 +1638,18 @@ t.test(PlantGrowth$weight[PlantGrowth$group == "ctrl"],
 
 </br>
 
-</br>
 
 
-Research question 1:
+**Research question:**
 
 
 - H0: the average weights of all groups are equal
 
 - H1: the average weights of all groups are not equal
 
-
+:::{.fragment .fade-in fragment-index="1"}
 One-way ANOVA!
+:::
 
 :::
 
@@ -1658,12 +1710,18 @@ aov_r <- aov(weight ~ group, PlantGrowth)
 summary(aov_r)
 ```
 
+</br>
 
-
+:::{.fragment .fade-in fragment-index="1"}
 `weight ~ group`: specifies the model for the ANOVA. 
+:::
 
+:::{.fragment .fade-in fragment-index="2"}
 `Formula`: aov(DV ~ IV, dataset)
+:::
 
+:::{.fragment .fade-in fragment-index="3"}
 `Summary()`: used to obtain and print a summary of the results from the ANOVA test
+:::
 
 
