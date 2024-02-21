@@ -1485,6 +1485,12 @@ ggplot(dat, aes(x = height, y = mass, color = gender)) +
 
 :::
 
+## Activity 2
+
+
+Draw a bar plot of the eye color variable.
+
+
 
 ## Statistical Analysis: t-test
 
