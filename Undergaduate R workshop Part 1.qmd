@@ -1177,7 +1177,7 @@ I will go over the solutions to each question and also send you a file with thos
 :::
 
 
-# {transition="zoom" data-menu-title="Part 2"}
+# {transition="zoom" data-menu-title="Part 2: Dplyr, GGplot, and Stats"}
 
 ::: {layout-ncol="2"}
 
@@ -1188,7 +1188,7 @@ I will go over the solutions to each question and also send you a file with thos
 
 <p style=" 
 
-  font-size: 2.7em;
+  font-size: 2.4em;
   font-weight:	800;
   font-family: sans-serif;
   smargin: 0 0 0px 0;
@@ -1197,7 +1197,7 @@ I will go over the solutions to each question and also send you a file with thos
   line-height: 0.5em;
   letter-spacing: 0.04em;
   text-transform: capitalize;
-  text-shadow: none; "> Part 2:  
+  text-shadow: none; "> Part 2: Dplyr, GGplot, and Stats
   
 </p>
 
@@ -1206,26 +1206,17 @@ I will go over the solutions to each question and also send you a file with thos
 
 <ul style = "font-size: 22px;">
 
-<li> R and RStudio </li>
+<li> The `dplyr` package for data manipulation </li>
 
-<li> The RStudio interface </li> 
+<li> The `ggplot2` package  for plotting</li> 
 
-<li> Running Code  </li>
+<li> Independent samples t-test </li>
 
-<li> Objects </li>
-
-<li> Functions </li>
-
-<li> Packages </li>
-
-<li> Importing data and subsetting  </li>
+<li> One-way ANOVA</li>
 
 </ul>
 
 </center>
-
-
-
 
 :::
 
@@ -1236,21 +1227,443 @@ I will go over the solutions to each question and also send you a file with thos
 :::
 :::
 
+## Data Manipulation with Dplyr  
+
+Besides subsetting, the `dplyr` package offers many functions for data manipulation. 
+
+- subsetting: select and manipulate data based on its position or condition within the data structure.
+
+- `dplyr`: provides a coherent set of verbs that help users manipulate data in a clear, and efficient way.
+
+<center> Here are some of the functions for data manipulation that `dplyr` offers:  </center>
+
+</br>
+
+
+::: {layout-ncol="2"}
+
+::: col
+
+`filter()`: picks cases based on their values
+
+</br>
+
+`select()`: picks variables based on their names
+
+</br>
+
+`arrange()`: changes the ordering of the rows 
+
+:::
+
+:::col
+
+`mutate()`: adds new variables that are functions of existing variables
+
+</br>
+
+`summarise()`: reduces multiple values down to a single summary
+:::
+
+:::
+
+## Example
+
+
+- Starwars: a built-in dataset in R
+
+```r
+# R has lots of built in datasets
+
+data("starwars")
+```
+
+
+- The **pipe operator**, `%>%`, is a powerful feature in R. 
+
+  - It allows us to chain together operations in a linear sequence
+  
+  - `%>%` is like saying “then”
+
+
+```r
+library(dplyr)
+
+numbers <- c(1,2,3,4)
+
+# Use the pipe operator to add 2 and then multiply by 3
+
+result <- numbers %>% 
+            magrittr::add(2) %>% 
+              magrittr::multiply_by(3)
+
+
+```
+
+
+```{r}
+library(dplyr)
+
+numbers <- c(1,2,3,4)
+
+# Use the pipe operator to add 2 and then multiply by 3
+
+result <- numbers %>% 
+            magrittr::add(2) %>% 
+              magrittr::multiply_by(3)
+
+```
+
+
+## Activity
+
+
+In Starwars data, filter for Droids, and then arrange the filtered dataset by height in descending order. 
+
+
+To access the starwars dataset in R, you need this line:
+
+
+```r
+data("starwars")
+```
+
+## Data Visualization
+
+::: {layout-ncol="2"}
+
+::: col
+
+`ggplot2` is a powerful and widely used data visualization package in R. It’s part of the `tidyverse` package, a collection of R packages designed for data science.  
+
+1. Every ggplot begins with the `ggplot()` function
+
+```r
+library(ggplot2)
+data("starwars")
+ggplot(starwars)
+```
+
+```{r}
+library(ggplot2)
+
+dat <- dplyr::starwars
+
+ggplot(dat)
+
+```
+
+
+:::
+
+:::col
+
+2. Tell ggplot what goes on the x/y axes, we use the aesthetics argument aes
+
+```r
+ggplot(starwars, aes(x = height, y = mass))
+```
+
+
+```{r}
+ggplot(dat, aes(x = height, y = mass))
+```
+
+
+:::
+
+:::
+
+
+
+## Build on the Plot
+
+
+3. Additional features (such as the type of plot) are added on with the `+` operator
+
+
+```r
+ggplot(starwars, aes(x = height, y = mass)) + 
+  geom_point() +
+  xlim(0, 250) +
+  ylim(0, 250)
+```
+
+
+```{r}
+
+ggplot(dat, aes(x = height, y = mass)) + 
+  geom_point() +
+  xlim(0, 250) +
+  ylim(0, 250)
+
+```
+
+
+## Make the Plot Pretty
+
+
+::: {layout-ncol="2"}
+
+::: {.column width="60%"}
+
+
+```r
+ggplot(starwars, aes(x = height, y = mass, color = gender)) + 
+  geom_point() +
+  xlim(0, 250) +
+  ylim(0, 250) +
+  labs(title = "Height vs. Mass of Star Wars Characters",
+       x = "Height (cm)",
+       y = "Mass (kg)",
+       color = "Gender") +
+  theme_minimal() +
+  theme(legend.position = "right",
+        plot.title = element_text(hjust = .5, size = 14, face = "bold"),
+        plot.margin = margin(t = 20, r = 20, b = 20, l = 20, unit = "pt"))
+```
+
+```{r}
+
+ggplot(dat, aes(x = height, y = mass, color = gender)) + 
+  geom_point() +
+  xlim(0, 250) +
+  ylim(0, 250) +
+  labs(title = "Height vs. Mass of Star Wars Characters",
+       x = "Height (cm)",
+       y = "Mass (kg)",
+       color = "Gender") +
+  theme_minimal() +
+  theme(legend.position = "right",
+        plot.title = element_text(hjust = .5, size = 14, face = "bold"),
+        plot.margin = margin(t = 20, r = 20, b = 20, l = 20, unit = "pt"))
+
+```
+
+
+
+:::
+
+:::{.column width="40%"}
+
+`Color = gender`: it uses the ‘gender’ variable to color-code the points on the plot
+
+
+`Labs(title = …., x = …, y = …, color = …)`: customizes the plot’s main title, labels for the x/y axes, and color legend
+
+`Theme_minimal()`: it applies a minimalistic theme to the plot
+
+
+`Theme(legend.position = …)`: further customizes the appearance of plot components
+
+
+:::
+
+:::
+
+
+## Statistical Analysis: t-test
+
+
+::: {layout-ncol="2"}
+
+::: {.column width="50%"}
+
+
+<center> Background </center>
+
+PlantGrowth data (a built-in dataset in R): contains data on the weight of plants grown in three different conditions. 
+
+```r
+data("PlantGrowth")
+```
+
+Research question 1:
+
+- H0: the average weights of the control group and treatment 1 group are equal
+- H1: the average weights of two groups are not equal
+
+Independent-samples t test!
+
+
+
+:::
+
+:::{.column width="50%"}
+
+
+</br>
+
+</br>
+
+```{r}
+
+
+library(reactablefmtr)
+dat <- datasets::PlantGrowth
+
+library(tidyr)
+
+dat$participant <- rep(1:10, 3)
+
+dat_wide <- dat %>% 
+pivot_wider(id_cols = participant,
+            names_from = group,
+            values_from = weight)
+
+
+library(reactable)
+
+reactable(data = dat_wide[,2:4],
+          pageSize = 10,
+          theme = journal())
 
 
 
 
+```
+
+
+:::
+
+:::
+
+
+## Independent-samples t-test
+
+::: {layout-ncol="2"}
+
+::: {.column width="50%"}
+
+`t.test()`: is used to perform t-tests in R
+
+`PlantGrowth$weight[PlantGrowth$group == "ctrl"`: select the ‘weight’ values from the PlantGrowth dataset for all observations under the control group
+
+`PlantGrowth$weight[PlantGrowth$group == "trt1"`: select the ‘weight’ values from the PlantGrowth dataset for all observations under the treatment 1 group
+
+`Alternative = "two.sided"`: this is used for a two-tailed t-test
+
+
+`var.equal = TRUE`: assumes equal variance for the t-test
+
+
+:::
+
+:::{.column width="50%"}
+
+</br>
+</br> 
+
+```r
+t t.test(PlantGrowth$weight[PlantGrowth$group == "ctrl"],
+         PlantGrowth$weight[PlantGrowth$group == "trt1"],
+         alternative = "two.sided", var.equal = TRUE)
+```
+
+
+```{r}
+t.test(PlantGrowth$weight[PlantGrowth$group == "ctrl"],
+       PlantGrowth$weight[PlantGrowth$group == "trt1"],
+       alternative = "two.sided", var.equal = TRUE)
+```
+
+:::
+
+:::
+
+## Statistical Analysis: one-way ANOVA
+
+
+::: {layout-ncol="2"}
+
+::: {.column width="50%"}
+
+
+
+</br>
+
+</br>
+
+</br>
+
+</br>
+
+
+Research question 1:
+
+
+- H0: the average weights of all groups are equal
+
+- H1: the average weights of all groups are not equal
+
+
+One-way ANOVA!
+
+:::
+
+:::{.column width="50%"}
+
+
+</br>
+
+</br>
+
+```{r}
+
+
+library(reactablefmtr)
+dat <- datasets::PlantGrowth
+
+library(tidyr)
+
+dat$participant <- rep(1:10, 3)
+
+dat_wide <- dat %>% 
+pivot_wider(id_cols = participant,
+            names_from = group,
+            values_from = weight)
+
+
+library(reactable)
+
+reactable(data = dat_wide[,2:4],
+          pageSize = 10,
+          theme = journal())
 
 
 
 
+```
+
+
+:::
+
+:::
+
+
+## one-way ANOVA
+
+
+You can run a one-way ANOVA with the `aov()` function:
+
+```r
+aov_r <- aov(weight ~ group, PlantGrowth)
+
+summary(aov_r)
+```
+
+```{r}
+aov_r <- aov(weight ~ group, PlantGrowth)
+
+summary(aov_r)
+```
 
 
 
+`weight ~ group`: specifies the model for the ANOVA. 
 
+`Formula`: aov(DV ~ IV, dataset)
 
-
-
-
+`Summary()`: used to obtain and print a summary of the results from the ANOVA test
 
 

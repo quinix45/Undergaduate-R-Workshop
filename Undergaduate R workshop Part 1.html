@@ -387,6 +387,13 @@
       margin-right: 0; 
     }
   </style>
+  <script src="Undergaduate R workshop Part 1_files/libs/core-js-2.5.3/shim.min.js"></script>
+  <script src="Undergaduate R workshop Part 1_files/libs/react-18.2.0/react.min.js"></script>
+  <script src="Undergaduate R workshop Part 1_files/libs/react-18.2.0/react-dom.min.js"></script>
+  <script src="Undergaduate R workshop Part 1_files/libs/reactwidget-1.0.0/react-tools.js"></script>
+  <script src="Undergaduate R workshop Part 1_files/libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+  <link href="Undergaduate R workshop Part 1_files/libs/reactable-0.4.4/reactable.css" rel="stylesheet">
+  <script src="Undergaduate R workshop Part 1_files/libs/reactable-binding-0.4.4/reactable.js"></script>
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -1289,7 +1296,8 @@ It is fine if you can’t solve all of the questions.
 </div>
 </div>
 </section></section>
-<section id="section-3" class="title-slide slide level1 center" data-transition="zoom" data-menu-title="Part 2">
+<section>
+<section id="section-3" class="title-slide slide level1 center" data-transition="zoom" data-menu-title="Part 2: Dplyr, GGplot, and Stats">
 <h1></h1>
 <div class="quarto-layout-panel" data-layout-ncol="2">
 <div class="quarto-layout-row">
@@ -1297,35 +1305,26 @@ It is fine if you can’t solve all of the questions.
 <center>
 <p style=" 
 
-  font-size: 2.7em;
+  font-size: 2.4em;
   font-weight:  800;
   font-family: sans-serif;
   smargin: 0 0 0px 0;
   color: #996633;
-  font-family: " league="" gothic",="" impact,="" sans-serif;="" line-height:="" 0.5em;="" letter-spacing:="" 0.04em;="" text-transform:="" capitalize;="" text-shadow:="" none;="" "=""> Part 2:  
+  font-family: " league="" gothic",="" impact,="" sans-serif;="" line-height:="" 0.5em;="" letter-spacing:="" 0.04em;="" text-transform:="" capitalize;="" text-shadow:="" none;="" "=""> Part 2: Dplyr, GGplot, and Stats
   
 </p>
 <ul style="font-size: 22px;">
 <li>
-R and RStudio
+The <code>dplyr</code> package for data manipulation
 </li>
 <li>
-The RStudio interface
+The <code>ggplot2</code> package for plotting
 </li>
 <li>
-Running Code
+Independent samples t-test
 </li>
 <li>
-Objects
-</li>
-<li>
-Functions
-</li>
-<li>
-Packages
-</li>
-<li>
-Importing data and subsetting
+One-way ANOVA
 </li>
 </ul>
 </center>
@@ -1335,12 +1334,272 @@ Importing data and subsetting
 </div>
 </div>
 </div>
+</section>
+<section id="data-manipulation-with-dplyr" class="slide level2">
+<h2>Data Manipulation with Dplyr</h2>
+<p>Besides subsetting, the <code>dplyr</code> package offers many functions for data manipulation.</p>
+<ul>
+<li><p>subsetting: select and manipulate data based on its position or condition within the data structure.</p></li>
+<li><p><code>dplyr</code>: provides a coherent set of verbs that help users manipulate data in a clear, and efficient way.</p></li>
+</ul>
+<center>
+Here are some of the functions for data manipulation that <code>dplyr</code> offers:
+</center>
+<p><br></p>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="col quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<p><code>filter()</code>: picks cases based on their values</p>
+<p><br></p>
+<p><code>select()</code>: picks variables based on their names</p>
+<p><br></p>
+<p><code>arrange()</code>: changes the ordering of the rows</p>
+</div>
+<div class="col quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<p><code>mutate()</code>: adds new variables that are functions of existing variables</p>
+<p><br></p>
+<p><code>summarise()</code>: reduces multiple values down to a single summary</p>
+</div>
+</div>
+</div>
+</section>
+<section id="example" class="slide level2">
+<h2>Example</h2>
+<ul>
+<li>Starwars: a built-in dataset in R</li>
+</ul>
+<div class="sourceCode" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href=""></a><span class="co"># R has lots of built in datasets</span></span>
+<span id="cb42-2"><a href=""></a></span>
+<span id="cb42-3"><a href=""></a><span class="fu">data</span>(<span class="st">"starwars"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><p>The <strong>pipe operator</strong>, <code>%&gt;%</code>, is a powerful feature in R.</p>
+<ul>
+<li><p>It allows us to chain together operations in a linear sequence</p></li>
+<li><p><code>%&gt;%</code> is like saying “then”</p></li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href=""></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb43-2"><a href=""></a></span>
+<span id="cb43-3"><a href=""></a>numbers <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>)</span>
+<span id="cb43-4"><a href=""></a></span>
+<span id="cb43-5"><a href=""></a><span class="co"># Use the pipe operator to add 2 and then multiply by 3</span></span>
+<span id="cb43-6"><a href=""></a></span>
+<span id="cb43-7"><a href=""></a>result <span class="ot">&lt;-</span> numbers <span class="sc">%&gt;%</span> </span>
+<span id="cb43-8"><a href=""></a>            magrittr<span class="sc">::</span><span class="fu">add</span>(<span class="dv">2</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb43-9"><a href=""></a>              magrittr<span class="sc">::</span><span class="fu">multiply_by</span>(<span class="dv">3</span>)</span>
+<span id="cb43-10"><a href=""></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="activity" class="slide level2">
+<h2>Activity</h2>
+<p>In Starwars data, filter for Droids, and then arrange the filtered dataset by height in descending order.</p>
+<p>To access the starwars dataset in R, you need this line:</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href=""></a><span class="fu">data</span>(<span class="st">"starwars"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="data-visualization" class="slide level2">
+<h2>Data Visualization</h2>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="col quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<p><code>ggplot2</code> is a powerful and widely used data visualization package in R. It’s part of the <code>tidyverse</code> package, a collection of R packages designed for data science.</p>
+<ol type="1">
+<li>Every ggplot begins with the <code>ggplot()</code> function</li>
+</ol>
+<div class="sourceCode" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href=""></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb45-2"><a href=""></a><span class="fu">data</span>(<span class="st">"starwars"</span>)</span>
+<span id="cb45-3"><a href=""></a><span class="fu">ggplot</span>(starwars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="Undergaduate-R-workshop-Part-1_files/figure-revealjs/unnamed-chunk-20-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="col quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<ol start="2" type="1">
+<li>Tell ggplot what goes on the x/y axes, we use the aesthetics argument aes</li>
+</ol>
+<div class="sourceCode" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href=""></a><span class="fu">ggplot</span>(starwars, <span class="fu">aes</span>(<span class="at">x =</span> height, <span class="at">y =</span> mass))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="Undergaduate-R-workshop-Part-1_files/figure-revealjs/unnamed-chunk-21-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="build-on-the-plot" class="slide level2">
+<h2>Build on the Plot</h2>
+<ol start="3" type="1">
+<li>Additional features (such as the type of plot) are added on with the <code>+</code> operator</li>
+</ol>
+<div class="sourceCode" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href=""></a><span class="fu">ggplot</span>(starwars, <span class="fu">aes</span>(<span class="at">x =</span> height, <span class="at">y =</span> mass)) <span class="sc">+</span> </span>
+<span id="cb47-2"><a href=""></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb47-3"><a href=""></a>  <span class="fu">xlim</span>(<span class="dv">0</span>, <span class="dv">250</span>) <span class="sc">+</span></span>
+<span id="cb47-4"><a href=""></a>  <span class="fu">ylim</span>(<span class="dv">0</span>, <span class="dv">250</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+<img data-src="Undergaduate-R-workshop-Part-1_files/figure-revealjs/unnamed-chunk-22-1.png" width="960" class="r-stretch"></section>
+<section id="make-the-plot-pretty" class="slide level2">
+<h2>Make the Plot Pretty</h2>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="column quarto-layout-cell" style="flex-basis: 60.0%;justify-content: flex-start;">
+<div class="sourceCode" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href=""></a><span class="fu">ggplot</span>(starwars, <span class="fu">aes</span>(<span class="at">x =</span> height, <span class="at">y =</span> mass, <span class="at">color =</span> gender)) <span class="sc">+</span> </span>
+<span id="cb48-2"><a href=""></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb48-3"><a href=""></a>  <span class="fu">xlim</span>(<span class="dv">0</span>, <span class="dv">250</span>) <span class="sc">+</span></span>
+<span id="cb48-4"><a href=""></a>  <span class="fu">ylim</span>(<span class="dv">0</span>, <span class="dv">250</span>) <span class="sc">+</span></span>
+<span id="cb48-5"><a href=""></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Height vs. Mass of Star Wars Characters"</span>,</span>
+<span id="cb48-6"><a href=""></a>       <span class="at">x =</span> <span class="st">"Height (cm)"</span>,</span>
+<span id="cb48-7"><a href=""></a>       <span class="at">y =</span> <span class="st">"Mass (kg)"</span>,</span>
+<span id="cb48-8"><a href=""></a>       <span class="at">color =</span> <span class="st">"Gender"</span>) <span class="sc">+</span></span>
+<span id="cb48-9"><a href=""></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb48-10"><a href=""></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"right"</span>,</span>
+<span id="cb48-11"><a href=""></a>        <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> .<span class="dv">5</span>, <span class="at">size =</span> <span class="dv">14</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
+<span id="cb48-12"><a href=""></a>        <span class="at">plot.margin =</span> <span class="fu">margin</span>(<span class="at">t =</span> <span class="dv">20</span>, <span class="at">r =</span> <span class="dv">20</span>, <span class="at">b =</span> <span class="dv">20</span>, <span class="at">l =</span> <span class="dv">20</span>, <span class="at">unit =</span> <span class="st">"pt"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="Undergaduate-R-workshop-Part-1_files/figure-revealjs/unnamed-chunk-23-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="column quarto-layout-cell" style="flex-basis: 40.0%;justify-content: flex-start;">
+<p><code>Color = gender</code>: it uses the ‘gender’ variable to color-code the points on the plot</p>
+<p><code>Labs(title = …., x = …, y = …, color = …)</code>: customizes the plot’s main title, labels for the x/y axes, and color legend</p>
+<p><code>Theme_minimal()</code>: it applies a minimalistic theme to the plot</p>
+<p><code>Theme(legend.position = …)</code>: further customizes the appearance of plot components</p>
+</div>
+</div>
+</div>
+</section>
+<section id="statistical-analysis-t-test" class="slide level2">
+<h2>Statistical Analysis: t-test</h2>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="column quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<center>
+Background
+</center>
+<p>PlantGrowth data (a built-in dataset in R): contains data on the weight of plants grown in three different conditions.</p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href=""></a><span class="fu">data</span>(<span class="st">"PlantGrowth"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Research question 1:</p>
+<ul>
+<li>H0: the average weights of the control group and treatment 1 group are equal</li>
+<li>H1: the average weights of two groups are not equal</li>
+</ul>
+<p>Independent-samples t test!</p>
+</div>
+<div class="column quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<p><br></p>
+<p><br></p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="reactable html-widget html-fill-item" id="htmlwidget-77baddc9691cdd8bb425" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-77baddc9691cdd8bb425">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"ctrl":[4.17,5.58,5.18,6.11,4.5,4.61,5.17,4.53,5.33,5.14],"trt1":[4.81,4.17,4.41,3.59,5.87,3.83,6.03,4.89,4.32,4.69],"trt2":[6.31,5.12,5.54,5.5,5.37,5.29,4.92,6.15,5.8,5.26]},"columns":[{"id":"ctrl","name":"ctrl","type":"numeric"},{"id":"trt1","name":"trt1","type":"numeric"},{"id":"trt2","name":"trt2","type":"numeric"}],"pageSizeOptions":[10],"theme":{"color":"#222222","backgroundColor":"#ffffff","borderColor":"#aaaaaa","borderWidth":"1px","stripedColor":"#eeeeee","highlightColor":"#eeeeee","cellPadding":6,"tableStyle":{"fontSize":14},"headerStyle":{"borderWidth":"2px","backgroundColor":"#ef8683","color":"#fad9d8","transitionDuration":"0.5s","&:hover[aria-sort]":{"color":"#ffffff"},"&[aria-sort='ascending'], &[aria-sort='descending']":{"color":"#ffffff"},"fontSize":15},"groupHeaderStyle":{"&:not(:empty)":{"color":"#222222"},"&:hover":{"fontWeight":"bold","transitionDuration":"1s","transitionTimingFunction":"ease-out","color":"#000000"}},"rowSelectedStyle":{"backgroundColor":"#f9d5d4","color":"#ffffff"},"inputStyle":{"backgroundColor":"#ffffff","color":"#212529"},"searchInputStyle":{"backgroundColor":"#ffffff","color":"#212529","borderColor":"#df9696","&:focus":{"color":"#212529"}},"selectStyle":{"backgroundColor":"#ffffff","color":"#eb6864","borderColor":"#ffffff","outlineColor":"#ffffff","&:hover":{"backgroundColor":"#eb6864","color":"#ffffff"}},"pageButtonStyle":{"backgroundColor":"#ffffff","color":"#eb6864","&:hover":{"backgroundColor":"#eb6864","color":"#ffffff"}},"pageButtonHoverStyle":{"backgroundColor":"#eb6864","color":"#ffffff"},"pageButtonActiveStyle":{"backgroundColor":"#eb6864","color":"#ffffff"},"pageButtonCurrentStyle":{"backgroundColor":"#eb6864","color":"#ffffff"}},"dataKey":"5ce94ee3ec1e87441f419f24da9b2423"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="independent-samples-t-test" class="slide level2">
+<h2>Independent-samples t-test</h2>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="column quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<p><code>t.test()</code>: is used to perform t-tests in R</p>
+<p><code>PlantGrowth$weight[PlantGrowth$group == "ctrl"</code>: select the ‘weight’ values from the PlantGrowth dataset for all observations under the control group</p>
+<p><code>PlantGrowth$weight[PlantGrowth$group == "trt1"</code>: select the ‘weight’ values from the PlantGrowth dataset for all observations under the treatment 1 group</p>
+<p><code>Alternative = "two.sided"</code>: this is used for a two-tailed t-test</p>
+<p><code>var.equal = TRUE</code>: assumes equal variance for the t-test</p>
+</div>
+<div class="column quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<p><br> <br></p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href=""></a>t <span class="fu">t.test</span>(PlantGrowth<span class="sc">$</span>weight[PlantGrowth<span class="sc">$</span>group <span class="sc">==</span> <span class="st">"ctrl"</span>],</span>
+<span id="cb50-2"><a href=""></a>         PlantGrowth<span class="sc">$</span>weight[PlantGrowth<span class="sc">$</span>group <span class="sc">==</span> <span class="st">"trt1"</span>],</span>
+<span id="cb50-3"><a href=""></a>         <span class="at">alternative =</span> <span class="st">"two.sided"</span>, <span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Two Sample t-test
+
+data:  PlantGrowth$weight[PlantGrowth$group == "ctrl"] and PlantGrowth$weight[PlantGrowth$group == "trt1"]
+t = 1.1913, df = 18, p-value = 0.249
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -0.2833003  1.0253003
+sample estimates:
+mean of x mean of y 
+    5.032     4.661 </code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="statistical-analysis-one-way-anova" class="slide level2">
+<h2>Statistical Analysis: one-way ANOVA</h2>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="column quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p>Research question 1:</p>
+<ul>
+<li><p>H0: the average weights of all groups are equal</p></li>
+<li><p>H1: the average weights of all groups are not equal</p></li>
+</ul>
+<p>One-way ANOVA!</p>
+</div>
+<div class="column quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<p><br></p>
+<p><br></p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="reactable html-widget html-fill-item" id="htmlwidget-c26e861fe1e0d51a8910" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-c26e861fe1e0d51a8910">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"ctrl":[4.17,5.58,5.18,6.11,4.5,4.61,5.17,4.53,5.33,5.14],"trt1":[4.81,4.17,4.41,3.59,5.87,3.83,6.03,4.89,4.32,4.69],"trt2":[6.31,5.12,5.54,5.5,5.37,5.29,4.92,6.15,5.8,5.26]},"columns":[{"id":"ctrl","name":"ctrl","type":"numeric"},{"id":"trt1","name":"trt1","type":"numeric"},{"id":"trt2","name":"trt2","type":"numeric"}],"pageSizeOptions":[10],"theme":{"color":"#222222","backgroundColor":"#ffffff","borderColor":"#aaaaaa","borderWidth":"1px","stripedColor":"#eeeeee","highlightColor":"#eeeeee","cellPadding":6,"tableStyle":{"fontSize":14},"headerStyle":{"borderWidth":"2px","backgroundColor":"#ef8683","color":"#fad9d8","transitionDuration":"0.5s","&:hover[aria-sort]":{"color":"#ffffff"},"&[aria-sort='ascending'], &[aria-sort='descending']":{"color":"#ffffff"},"fontSize":15},"groupHeaderStyle":{"&:not(:empty)":{"color":"#222222"},"&:hover":{"fontWeight":"bold","transitionDuration":"1s","transitionTimingFunction":"ease-out","color":"#000000"}},"rowSelectedStyle":{"backgroundColor":"#f9d5d4","color":"#ffffff"},"inputStyle":{"backgroundColor":"#ffffff","color":"#212529"},"searchInputStyle":{"backgroundColor":"#ffffff","color":"#212529","borderColor":"#df9696","&:focus":{"color":"#212529"}},"selectStyle":{"backgroundColor":"#ffffff","color":"#eb6864","borderColor":"#ffffff","outlineColor":"#ffffff","&:hover":{"backgroundColor":"#eb6864","color":"#ffffff"}},"pageButtonStyle":{"backgroundColor":"#ffffff","color":"#eb6864","&:hover":{"backgroundColor":"#eb6864","color":"#ffffff"}},"pageButtonHoverStyle":{"backgroundColor":"#eb6864","color":"#ffffff"},"pageButtonActiveStyle":{"backgroundColor":"#eb6864","color":"#ffffff"},"pageButtonCurrentStyle":{"backgroundColor":"#eb6864","color":"#ffffff"}},"dataKey":"5ce94ee3ec1e87441f419f24da9b2423"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="one-way-anova" class="slide level2">
+<h2>one-way ANOVA</h2>
+<p>You can run a one-way ANOVA with the <code>aov()</code> function:</p>
+<div class="sourceCode" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href=""></a>aov_r <span class="ot">&lt;-</span> <span class="fu">aov</span>(weight <span class="sc">~</span> group, PlantGrowth)</span>
+<span id="cb52-2"><a href=""></a></span>
+<span id="cb52-3"><a href=""></a><span class="fu">summary</span>(aov_r)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>            Df Sum Sq Mean Sq F value Pr(&gt;F)  
+group        2  3.766  1.8832   4.846 0.0159 *
+Residuals   27 10.492  0.3886                 
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+<p><code>weight ~ group</code>: specifies the model for the ANOVA.</p>
+<p><code>Formula</code>: aov(DV ~ IV, dataset)</p>
+<p><code>Summary()</code>: used to obtain and print a summary of the results from the ANOVA test</p>
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 <p>Undergraduate R workshop Spring 2024</p>
 </div>
 </div>
-</section>
+</section></section>
     </div>
   </div>
 
